@@ -1,0 +1,1 @@
+from NickBlog.settings.base import *
