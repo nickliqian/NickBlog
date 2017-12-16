@@ -1,35 +1,42 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>About Me</title>
+    <title>首页</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
     <!-- Bootstrap styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
- 
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 
     <!-- Font-Awesome -->
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/font-awesome/css/font-awesome.min.css' %}">
 
     <!-- Google Webfonts -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600|PT+Serif:400,400italic' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' type='text/css' href="{% static 'css/font-awesome/css/font-awesome.min.css' %}">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css" id="theme-styles">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" id="theme-styles">
 
-    <!--[if lt IE 9]>      
+    <!--[if lt IE 9]>
         <script src="js/vendor/google/html5-3.6-respond-1.1.0.min.js"></script>
     <![endif]-->
-    
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/modernizr.js' %}"></script>
+
+{% block morehead %}
+{% endblock morehead %}
+
 </head>
 <body>
     <header>
         <div class="widewrapper masthead">
             <div class="container">
-                <a href="article/index.html" id="logo">
-                    <img src="img/logo.png" alt="clean Blog">
+                <a href="index.html" id="logo">
+                    <img src="{% static 'img/logo.png' %}" alt="clean Blog">
                 </a>
 
                 <div id="mobile-nav-toggle" class="pull-right">
@@ -41,19 +48,19 @@
                 <nav class="pull-right clean-nav">
                     <div class="collapse navbar-collapse">
                         <ul class="nav nav-pills navbar-nav">
-                          
-                             <li>
-                                <a href="article/index.html">Home</a>
+
+                            <li>
+                                <a href="index.html">Home</a>
                             </li>
                             <li>
-                                <a href="about.html">About</a>
+                                <a href="../about.html">About</a>
                             </li>
                             <li>
-                                <a href="contact.html">Contact</a>
-                            </li>                   
+                                <a href="../contact.html">Contact</a>
+                            </li>
                         </ul>
                     </div>
-                </nav>        
+                </nav>
 
             </div>
         </div>
@@ -61,14 +68,13 @@
         <div class="widewrapper subheader">
             <div class="container">
                 <div class="clean-breadcrumb">
-                    <a href="#">About Me</a>
+                    <a href="#"><i class="fa fa-refresh"></i>Refresh</a>
                 </div>
 
                 <div class="clean-searchbox">
                     <form action="#" method="get" accept-charset="utf-8">
-                       
                         <input class="searchfield" id="searchbox" type="text" placeholder="Search">
-                         <button class="searchbutton" type="submit">
+                        <button class="searchbutton" type="submit">
                             <i class="fa fa-search"></i>
                         </button>
                     </form>
@@ -77,19 +83,9 @@
         </div>
     </header>
 
-    <div class="widewrapper main">
-        <div class="container about">
-            <h1>Hello, My name is <span class="about-bold">  John Doe</span></h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus inventore magni ratione perferendis ex molestiae cum reiciendis perspiciatis consequuntur, nihil ducimus corrupti! Ipsum nesciunt ipsa nobis obcaecati labore, rem recusandae?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui quo sint asperiores, ut doloremque eum commodi, odit nisi sed repellendus earum recusandae pariatur consectetur minus rerum, magni dolores officiis magnam.</p>
+{% block content %}
 
-            <div class="about-button">
-                <a class="btn btn-xlarge btn-clean-one" href="contact.html">Contact Me</a>
-            </div>
-            <hr>
-        </div>
-
-    </div>
+{% endblock content %}
 
     <footer>
         <div class="widewrapper footer">
@@ -123,18 +119,16 @@
                             <i class="fa fa-facebook"></i><i class="fa fa-twitter"></i><i class="fa fa-google"></i>
                         </div>
                     </div>
-                   
+
                 </div>
             </div>
         </div>
         <div class="widewrapper copyright">
-                Copyright 2015
+                Copyright 2017 -- <span>E-mail: <span>nickliqian@outlook.com</span></span>
         </div>
     </footer>
-    
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/modernizr.js"></script>
+
+
 
 </body>
 </html>

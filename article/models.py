@@ -8,7 +8,7 @@ class Article(TimeStampMixin, LastSeenMixin, models.Model):
     # 标题
     title = models.CharField(max_length=255, unique=True)
     # 作者
-    author = models.CharField(max_length=1000)
+    author = models.CharField(max_length=1000, blank=False)
     # 作品类型
     article_type = models.ForeignKey('ArticleType', related_name="type2article")
     # 标签
@@ -21,11 +21,11 @@ class Article(TimeStampMixin, LastSeenMixin, models.Model):
     # 说明
     remark = models.CharField(max_length=1000, default='no remark', blank=True)
     # 摘要
-    short_note = models.CharField(max_length=1000, default='no short note', blank=True)
+    short_note = models.TextField(max_length=1000, default='no short note', blank=True)
     # 是否删除
     isDelete = models.BooleanField(default=False)
     # 封面图片 height_field=None, width_field=None
-    cover_img = models.ImageField(upload_to='uploads/coverImg', max_length=100, blank=True)
+    cover_img = models.ImageField(upload_to='uploads/coverImg', blank=True)
 
     def __str__(self):
         return "{}-{}".format(self.title, self.article_type)
