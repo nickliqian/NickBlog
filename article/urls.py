@@ -1,11 +1,13 @@
 from django.conf.urls import url
-from .views import IndexView, ArticleDetailView
+from .views import IndexView, ArticleDetailView, ArticleListView
 
 
 urlpatterns = [
     # 首页
     url(r'^$', IndexView.as_view(), name='index'),
     # 详细页
-    url(r'^(?P<pk>[-\w]+)/$', ArticleDetailView.as_view(), name='article-detail')
+    url(r'^detail/(?P<pk>[-\w]+)/$', ArticleDetailView.as_view(), name='article-detail'),
+    # 列表页
+    url(r'^all/$', ArticleListView.as_view(), name='article-list'),
     ]
 

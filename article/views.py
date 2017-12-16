@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
 from django.http import Http404
-from django.utils import timezone
 
 from article.models import Article
 
@@ -10,6 +10,7 @@ from article.models import Article
 class IndexView(TemplateView):
     template_name = "article/index.html"
 
+    # 构造首页显示的对象
     @staticmethod
     def newest_article():
         try:
@@ -30,15 +31,24 @@ class IndexView(TemplateView):
         return self.render_to_response(context)
 
 
+# timezone.now() -> 2017-12-16 16:10:46.836409+00:00
 class ArticleDetailView(DetailView):
-
     model = Article
     template_name = "article/detail.html"
 
     def get_context_data(self, **kwargs):
         obj = self.object
+        # 记录被浏览次数
         obj.view_count += 1
         obj.save()
         context = super(ArticleDetailView, self).get_context_data(**kwargs)
-        context['now'] = timezone.now()
         return context
+
+
+class ArticleListView(ListView):
+    model = Article
+    template_name = "article/list.html"
+
+    # def get_context_data(self, **kwargs):
+    #     context = super(ArticleListView, self).get_context_data(**kwargs)
+    #     return context

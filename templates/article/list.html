@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block morehead %}
+{% endblock morehead %}
+
+{% block content %}
+
+                <div class="col-md-8 blog-main">
+
+                    {% for object in object_list %}
+
+                    <article class="blog-post">
+
+                        <div class="body">
+                            <a href="{% url 'article:article-detail' object.id %}"><h2><b>{{ object.title|escape }}</b></h2></a>
+
+                            <div class="meta">
+                                <i class="fa fa-user"></i> {{ object.author }}
+                                <i class="fa fa-calendar"></i> {{ object.created }}
+                                <i class="fa fa-eye"></i> {{ object.view_count }}
+                                <i class="fa fa-comments"></i>
+                                    <span class="data">
+                                        <a href="#comments">3 Comments</a>
+                                    </span>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="lead-image">
+                                        <img src="/static/media/{{ object.cover_img }}" alt="" class="img-responsive">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div>
+                                    {{ object.short_note|safe }}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </article>
+                    <HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#987cb9 SIZE=3>
+                    {% endfor %}
+
+                </div>
+
+
+{% endblock content %}
