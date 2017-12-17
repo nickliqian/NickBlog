@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
@@ -37,11 +36,11 @@ class ArticleDetailView(DetailView):
     template_name = "article/detail.html"
 
     def get_context_data(self, **kwargs):
+        context = super(ArticleDetailView, self).get_context_data(**kwargs)
         obj = self.object
         # 记录被浏览次数
         obj.view_count += 1
         obj.save()
-        context = super(ArticleDetailView, self).get_context_data(**kwargs)
         return context
 
 
@@ -49,6 +48,6 @@ class ArticleListView(ListView):
     model = Article
     template_name = "article/list.html"
 
-    # def get_context_data(self, **kwargs):
-    #     context = super(ArticleListView, self).get_context_data(**kwargs)
-    #     return context
+    def get_context_data(self, **kwargs):
+        context = super(ArticleListView, self).get_context_data(**kwargs)
+        return context

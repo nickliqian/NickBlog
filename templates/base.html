@@ -1,11 +1,16 @@
-{% load staticfiles %}
+{% load staticfiles aside_func %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>首页</title>
+
+    {% block headtitle %}
+        <title>首页</title>
+    {% endblock headtitle %}
+
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <link rel="shortcut  icon" href="{% static 'img/f_icon.ico' %}" type="image/x-icon" />
 
     <!-- Bootstrap styles -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
@@ -26,6 +31,7 @@
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/modernizr.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/extend.css' %}" id="theme-styles">
 
 {% block morehead %}
 {% endblock morehead %}
@@ -35,8 +41,8 @@
     <header>
         <div class="widewrapper masthead">
             <div class="container">
-                <a href="index.html" id="logo">
-                    <img src="{% static 'img/logo.png' %}" alt="clean Blog">
+                <a href="/" id="logo">
+                    <img src="{% static 'img/ladybug.png' %}" alt="clean Blog">
                 </a>
 
                 <div id="mobile-nav-toggle" class="pull-right">
@@ -49,15 +55,11 @@
                     <div class="collapse navbar-collapse">
                         <ul class="nav nav-pills navbar-nav">
 
-                            <li>
-                                <a href="index.html">Home</a>
-                            </li>
-                            <li>
-                                <a href="../about.html">About</a>
-                            </li>
-                            <li>
-                                <a href="../contact.html">Contact</a>
-                            </li>
+                            <li><a href="/">主页</a></li>
+                            <li><a href="/article/all">文章</a></li>
+                            <li><a href="/">关于</a></li>
+                            <li><a href="/">联系站长</a></li>
+
                         </ul>
                     </div>
                 </nav>
@@ -68,7 +70,7 @@
         <div class="widewrapper subheader">
             <div class="container">
                 <div class="clean-breadcrumb">
-                    <a href="#"><i class="fa fa-refresh"></i>Refresh</a>
+                    <a href="http://fontawesome.io/icons/" title="获取这组图标" target="_blank"><i class="fa fa-user"></i></a>  分享工作、生活和学习的点滴。
                 </div>
 
                 <div class="clean-searchbox">
@@ -92,61 +94,11 @@
             {% endblock content %}
 
 
-{% block aside %}
-<aside class="col-md-4 blog-aside">
+            {% block aside %}
 
-                    <div class="aside-widget">
-                        <header>
-                            <h3>Featured Post</h3>
-                        </header>
-                        <div class="body">
-                            <ul class="clean-list">
-                                <li><a href="">Clean - Responsive HTML5 Template</a></li>
-                                <li><a href="">Responsive Pricing Table</a></li>
-                                <li><a href="">Yellow HTML5 Template</a></li>
-                                <li><a href="">Blackor Responsive Theme</a></li>
-                                <li><a href="">Portfolio Bootstrap Template</a></li>
-                                <li><a href="">Clean Slider Template</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                {% aside_tag %}
 
-                    <div class="aside-widget">
-                        <header>
-                            <h3>Related Post</h3>
-                        </header>
-                        <div class="body">
-                            <ul class="clean-list">
-                                <li><a href="">Blackor Responsive Theme</a></li>
-                                <li><a href="">Portfolio Bootstrap Template</a></li>
-                                <li><a href="">Clean Slider Template</a></li>
-                                <li><a href="">Clean - Responsive HTML5 Template</a></li>
-                                <li><a href="">Responsive Pricing Table</a></li>
-                                <li><a href="">Yellow HTML5 Template</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="aside-widget">
-                        <header>
-                            <h3>Tags</h3>
-                        </header>
-                        <div class="body clearfix">
-                            <ul class="tags">
-                                <li><a href="#">HTML5</a></li>
-                                <li><a href="#">CSS3</a></li>
-                                <li><a href="#">COMPONENTS</a></li>
-                                <li><a href="#">TEMPLATE</a></li>
-                                <li><a href="#">PLUGIN</a></li>
-                                <li><a href="#">BOOTSTRAP</a></li>
-                                <li><a href="#">TUTORIAL</a></li>
-                                <li><a href="#">UI/UX</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </aside>
-
-{% endblock aside %}
+            {% endblock aside %}
         </div>
     </div>
 </div>

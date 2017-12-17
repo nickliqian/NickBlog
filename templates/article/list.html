@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
+{% block headtitle %}
+    <title>所有文章</title>
+{% endblock headtitle %}
+
 {% block morehead %}
 {% endblock morehead %}
 
@@ -13,7 +17,7 @@
                     <article class="blog-post">
 
                         <div class="body">
-                            <a href="{% url 'article:article-detail' object.id %}"><h2><b>{{ object.title|escape }}</b></h2></a>
+                            <a href="{% url 'article:article-detail' object.id %}" class="hover_href"><h2><b>{{ object.title|escape }}</b></h2></a>
 
                             <div class="meta">
                                 <i class="fa fa-user"></i> {{ object.author }}

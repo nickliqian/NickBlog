@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
+{% block headtitle %}
+    <title>首页</title>
+{% endblock headtitle %}
+
 {% block morehead %}
 {% endblock morehead %}
 
@@ -15,7 +19,7 @@
                             <article class=" blog-teaser">
                                 <header>
                                     <img src="/static/media/{{ obj.cover_img }}" alt="">
-                                    <h3><a href="{% url 'article:article-detail' obj.id %}">{{ obj.title }}</a></h3>
+                                    <h3><a href="{% url 'article:article-detail' obj.id %}" class="hover_href">{{ obj.title }}</a></h3>
                                     <span class="meta">{{ obj.created }}</span>
                                     <hr>
                                 </header>
@@ -32,7 +36,7 @@
                   {% endfor %}
 
                     <div class="paging">
-                        <a href="#" class="older"><i>Older Post</i></a>
+                        <a href="{% url 'article:article-list' %}" class="older"><i>More</i></a>
                     </div>
                 </div>
 

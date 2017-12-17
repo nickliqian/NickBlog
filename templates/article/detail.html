@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
+{% block headtitle %}
+    <title>{{ object.title }}</title>
+{% endblock headtitle %}
+
 {% block morehead %}
 {% endblock morehead %}
 
@@ -16,7 +20,7 @@
                             </div>
                         </header>
                         <div class="body">
-                            <h1><b>{{ object.title|escape }}</b></h1>
+                            <h1><b>{{ object.title }}</b></h1>
                             <div class="meta">
                                 <i class="fa fa-user"></i> {{ object.author }}
                                 <i class="fa fa-calendar"></i> {{ object.created }}

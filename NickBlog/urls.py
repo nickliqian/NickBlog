@@ -21,7 +21,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
 
     # article
-    # url(r'^', include("article.urls", namespace="indexEmpty")),
+    url(r'^', include("article.urls", namespace="indexEmpty")),
     # url(r'^index/', include("article.urls", namespace="index")),
     url(r'^article/', include("article.urls", namespace="article")),
 ]

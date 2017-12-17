@@ -1,0 +1,12 @@
+
+.blog-teaser header h3 .hover_href:hover {
+  color: #ff6868;
+}
+
+.hover_href:hover {
+  color: #ff6868;
+}
+
+.clean-list li a:hover {
+  color: #ff8383;
+}

@@ -1,0 +1,41 @@
+<aside class="col-md-4 blog-aside">
+
+    <div class="aside-widget">
+        <header>
+            <h3>点击排行</h3>
+        </header>
+        <div class="body">
+            <ul class="clean-list">
+                {% for item in get_top_view %}
+                    <li><a href="{% url 'article:article-detail' item.id %}">{{ item.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="aside-widget">
+        <header>
+            <h3>猜你喜欢</h3>
+        </header>
+        <div class="body">
+            <ul class="clean-list">
+                {% for item in get_guesses %}
+                    <li><a href="{% url 'article:article-detail' item.id %}">{{ item.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="aside-widget">
+        <header>
+            <h3>热门主题</h3>
+        </header>
+        <div class="body clearfix">
+            <ul class="tags">
+                {% for item in get_all_tags %}
+                    <li><a href="#">{{ item.tag_name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</aside>
