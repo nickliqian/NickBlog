@@ -29,7 +29,6 @@
                                     <span class="data">
                                         <a href="#comments">3 Comments</a>
                                     </span>
-
                             </div>
 
                             <div>
@@ -38,23 +37,26 @@
                         </div>
                     </article>
 
+                    <!--分享-->
                     <aside class="social-icons clearfix">
                         <h3>Share on </h3>
                         <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-google"></i></a>
                     </aside>
 
+                    <!--评论-->
                     <aside class="comments" id="comments">
                         <hr>
 
-                        <h2><i class="fa fa-comments"></i> 6 Comments</h2>
+                        <h2><i class="fa fa-comments"></i> {{ comment_count }} 评论</h2>
 
+                        {% for comment in article_comment %}
                         <article class="comment">
-                            <header class="clearfix">
-                                <img src="{% static 'img/avatar.png' %}" alt="A Smart Guy" class="avatar">
+                            <header class="clearfix comment_header">
+                                <img src="{% static 'img/avatar.png' %}" alt="UserImg" class="avatar">
                                 <div class="meta">
-                                    <h3><a href="#">John Doe</a></h3>
+                                    <h3><a href="#">{{ comment.user_name }}</a></h3>
                                     <span class="date">
-                                        24 August 2015
+                                        {{ comment.created }}
                                     </span>
                                     <span class="separator">
                                         -
@@ -63,76 +65,18 @@
                                     <a href="#create-comment" class="reply-link">Reply</a>
                                 </div>
                             </header>
-                             <div class="body">
-                               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere sit perspiciatis debitis, vel ducimus praesentium expedita, assumenda ipsum cum corrupti dolorum modi. Rem ipsam similique sapiente obcaecati tenetur beatae voluptatibus.
+                             <div class="body comment_body">
+                                {{ comment.content|safe }}
                             </div>
                         </article>
-
-                        <article class="comment reply">
-                            <header class="clearfix">
-                                <img src="{% static 'img/avatar.png' %}" alt="A Smart Guy" class="avatar">
-                                <div class="meta">
-                                    <h3><a href="#">John Doe</a></h3>
-                                    <span class="date">
-                                        24 August 2015
-                                    </span>
-                                    <span class="separator">
-                                        -
-                                    </span>
-
-                                    <a href="#create-comment" class="reply-link">Reply</a>
-                                </div>
-                            </header>
-                             <div class="body">
-                               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere sit perspiciatis debitis, vel ducimus praesentium expedita, assumenda ipsum cum corrupti dolorum modi. Rem ipsam similique sapiente obcaecati tenetur beatae voluptatibus.
-                            </div>
-                        </article>
-
-                        <article class="comment ">
-                            <header class="clearfix">
-                                <img src="{% static 'img/avatar.png' %}" alt="A Smart Guy" class="avatar">
-                                <div class="meta">
-                                    <h3><a href="#">John Doe</a></h3>
-                                    <span class="date">
-                                        24 August 2015
-                                    </span>
-                                    <span class="separator">
-                                        -
-                                    </span>
-
-                                    <a href="#create-comment" class="reply-link">Reply</a>
-                                </div>
-                            </header>
-                             <div class="body">
-                               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere sit perspiciatis debitis, vel ducimus praesentium expedita, assumenda ipsum cum corrupti dolorum modi. Rem ipsam similique sapiente obcaecati tenetur beatae voluptatibus.
-                            </div>
-                        </article>
-
-                        <article class="comment">
-                            <header class="clearfix">
-                                <img src="{% static 'img/avatar.png' %}" alt="A Smart Guy" class="avatar">
-                                <div class="meta">
-                                    <h3><a href="#">John Doe</a></h3>
-                                    <span class="date">
-                                        24 August 2015
-                                    </span>
-                                    <span class="separator">
-                                        -
-                                    </span>
-
-                                    <a href="#create-comment" class="reply-link">Reply</a>
-                                </div>
-                            </header>
-                             <div class="body">
-                               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere sit perspiciatis debitis, vel ducimus praesentium expedita, assumenda ipsum cum corrupti dolorum modi. Rem ipsam similique sapiente obcaecati tenetur beatae voluptatibus.
-                            </div>
-                        </article>
+                        {% endfor %}
                     </aside>
 
+                    <!--表单-->
                     <aside class="create-comment" id="create-comment">
                         <hr>
 
-                        <h2><i class="fa fa-pencil"></i> Add Comment</h2>
+                        <h2><i class="fa fa-pencil"></i> 添加评论</h2>
 
                         <form action="#" method="get" accept-charset="utf-8">
                             <div class="row">

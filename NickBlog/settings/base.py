@@ -94,7 +94,7 @@ DATABASES = {
     'default': {
         # 事务回调API transaction_hooks
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('DATABASE_NAME', 'NickBlog'),
+        'NAME': 'NickBlog',
         'USER': os.environ.get('DATABASE_USER', 'root'),
         'PASSWORD': os.environ.get('DATABASE_PASSWORD', 'password') or None,
         'HOST': os.environ.get('DATABASE_HOST', '127.0.0.1'),

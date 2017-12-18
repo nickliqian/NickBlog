@@ -68,7 +68,7 @@ class TagType(TimeStampMixin, models.Model):
 
 class Comment(TimeStampMixin, models.Model):
     # 对应的文章
-    article = models.ForeignKey('Article', blank=False)
+    article = models.ForeignKey('Article', blank=False, related_name='article2comment')
     # 留言内容
     content = UEditorField(height=300, width=1000, blank=False, imagePath="uploads/blog/images/",
                            toolbars='besttome', filePath='uploads/blog/files/')

@@ -16,7 +16,15 @@ class TagTypeAdmin(admin.ModelAdmin):
 
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('article', 'user_name', 'user_name', 'created')
+    list_display = ('article', 'user_name', 'created', 'show_content')
+
+    # 非转义模式显示评论
+    def show_content(self, obj):
+        if not obj.content:
+            return None
+        return obj.content
+    show_content.short_description = 'Content'
+    show_content.allow_tags = True
 
 
 admin.site.register(Article, ArticleAdmin)

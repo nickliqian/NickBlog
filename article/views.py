@@ -3,7 +3,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.http import Http404
 
-from article.models import Article
+from article.models import Article, Comment
 
 
 class IndexView(TemplateView):
@@ -35,12 +35,18 @@ class ArticleDetailView(DetailView):
     model = Article
     template_name = "article/detail.html"
 
+    def comment(self):
+        comment_list = Comment.objects.filter(article__pk=self.object.id)
+        comment_count = len(comment_list)
+        return comment_list, comment_count
+
     def get_context_data(self, **kwargs):
         context = super(ArticleDetailView, self).get_context_data(**kwargs)
         obj = self.object
         # 记录被浏览次数
         obj.view_count += 1
         obj.save()
+        context['article_comment'], context['comment_count'] = self.comment()
         return context
 
 

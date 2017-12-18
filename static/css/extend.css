@@ -10,3 +10,11 @@
 .clean-list li a:hover {
   color: #ff8383;
 }
+
+aside.comments .comment .comment_body {
+    margin-top: 5px;
+}
+
+.comment .meta {
+    margin-bottom: 10px;
+}
