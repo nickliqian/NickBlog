@@ -1,9 +1,12 @@
 from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
+from django.views.generic.base import RedirectView
 from django.http import Http404
+from django.shortcuts import get_object_or_404
 
 from article.models import Article, Comment
+from mylib.myforms import CommentForm
 
 
 class IndexView(TemplateView):
@@ -47,7 +50,26 @@ class ArticleDetailView(DetailView):
         obj.view_count += 1
         obj.save()
         context['article_comment'], context['comment_count'] = self.comment()
+        comment_form = CommentForm()
+        context['form'] = comment_form
         return context
+
+
+class ArticleDetailRedirectView(RedirectView):
+
+    permanent = False
+    query_string = True
+    pattern_name = 'article:article-detail'
+
+    def get_redirect_url(self, *args, **kwargs):
+        url = super(ArticleDetailRedirectView, self).get_redirect_url(*args, **kwargs)
+        return url
+
+    def post(self, request, *args, **kwargs):
+        print(dict(request.POST.lists()))
+        form = CommentForm(request.POST)
+        form.is_valid()
+        return self.get(request, *args, **kwargs)
 
 
 class ArticleListView(ListView):
@@ -56,4 +78,6 @@ class ArticleListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(ArticleListView, self).get_context_data(**kwargs)
+        context['comment_count'] = Comment.objects.count()
         return context
+
