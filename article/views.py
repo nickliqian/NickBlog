@@ -62,13 +62,15 @@ class ArticleDetailRedirectView(RedirectView):
     pattern_name = 'article:article-detail'
 
     def get_redirect_url(self, *args, **kwargs):
-        url = super(ArticleDetailRedirectView, self).get_redirect_url(*args, **kwargs)
-        return url
+        return super(ArticleDetailRedirectView, self).get_redirect_url(*args, **kwargs)
 
     def post(self, request, *args, **kwargs):
+        print(request.method)
         print(dict(request.POST.lists()))
         form = CommentForm(request.POST)
-        form.is_valid()
+        if form.is_valid():
+            form.save()
+
         return self.get(request, *args, **kwargs)
 
 

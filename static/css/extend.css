@@ -45,23 +45,23 @@ animation:spiderRun 25s;
 @keyframes spiderRun
 {
 0%   {left:0px; top:0px;}
-100%  {left:1000px; top:0px;}
+100%  {left:700px; top:0px;}
 }
 
 @-moz-keyframes spiderRun /* Firefox */
 {
 0%   {left:0px; top:0px;}
-100%  {left:1000px; top:0px;}
+100%  {left:700px; top:0px;}
 }
 
 @-webkit-keyframes spiderRun /* Safari and Chrome */
 {
 0%   {left:0px; top:0px;}
-100%  {left:1000px; top:0px;}
+100%  {left:700px; top:0px;}
 }
 
 @-o-keyframes spiderRun /* Opera */
 {
 0%   {left:0px; top:0px;}
-100%  {left:1000px; top:0px;}
+100%  {left:700px; top:0px;}
 }

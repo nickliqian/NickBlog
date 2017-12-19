@@ -9,12 +9,14 @@ DEBUG_TOOLBAR_PATCH_SETTINGS = False
 INSTALLED_APPS = INSTALLED_APPS + (
     'debug_toolbar.apps.DebugToolbarConfig',
     'django_extensions',
+    'silk',
 
 )
 
 # 添加调试工具中间件
 MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'silk.middleware.SilkyMiddleware',
 )
 
 # 使用调试工具的IP
