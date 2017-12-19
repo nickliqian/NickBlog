@@ -65,8 +65,6 @@ class ArticleDetailRedirectView(RedirectView):
         return super(ArticleDetailRedirectView, self).get_redirect_url(*args, **kwargs)
 
     def post(self, request, *args, **kwargs):
-        print(request.method)
-        print(dict(request.POST.lists()))
         form = CommentForm(request.POST)
         if form.is_valid():
             form.save()
@@ -81,5 +79,6 @@ class ArticleListView(ListView):
     def get_context_data(self, **kwargs):
         context = super(ArticleListView, self).get_context_data(**kwargs)
         context['comment_count'] = Comment.objects.count()
+        print(ppp)
         return context
 

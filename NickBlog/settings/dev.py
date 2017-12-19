@@ -10,8 +10,11 @@ INSTALLED_APPS = INSTALLED_APPS + (
     'debug_toolbar.apps.DebugToolbarConfig',
     'django_extensions',
     'silk',
-
 )
+
+SILKY_PYTHON_PROFILER = True
+SILKY_PYTHON_PROFILER_BINARY = True
+
 
 # 添加调试工具中间件
 MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (

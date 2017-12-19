@@ -12,8 +12,11 @@
         var a = document.getElementById('comment-name').value.length;
         var b = document.getElementById('comment-body').value.length;
 
-        if (a <= 0 | a >30 | b<=0 | b > 500) {
+        if (a <= 0 || b<=0) {
             alert('姓名或内容不能为空');
+            return false;
+        } else if (a >30 || b > 500) {
+            alert('姓名或内容长度超过限制：姓名<30长度，内容<500长度');
             return false;
         }
 
@@ -54,10 +57,10 @@
                     </article>
 
                     <!--分享-->
-                    <aside class="social-icons clearfix">
-                        <h3>Share on </h3>
-                        <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-google"></i></a>
-                    </aside>
+                    <!--<aside class="social-icons clearfix">-->
+                        <!--<h3>Share on </h3>-->
+                        <!--<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-google"></i></a>-->
+                    <!--</aside>-->
 
                     <!--评论-->
                     <aside class="comments" id="comments">
@@ -78,7 +81,7 @@
                                         -
                                     </span>
 
-                                    <a href="#create-comment" class="reply-link">Reply</a>
+                                    <a href="#create-comment" class="reply-link">回复</a>
                                 </div>
                             </header>
                              <div class="body comment_body">
@@ -110,7 +113,7 @@
                         <textarea rows="5" name="content" id="comment-body" placeholder="输入评论" class="form-control input-lg"></textarea>
 
                         <div class="buttons clearfix">
-                            <button type="submit" class="btn btn-xlarge btn-clean-one" onClick="javascript:return checkBlank();">Submit</button>
+                            <button type="submit" class="btn btn-xlarge btn-clean-one" onClick="javascript:return checkBlank();">提交评论</button>
                        </div>
                     </form>
 
