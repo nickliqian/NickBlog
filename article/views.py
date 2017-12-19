@@ -79,6 +79,5 @@ class ArticleListView(ListView):
     def get_context_data(self, **kwargs):
         context = super(ArticleListView, self).get_context_data(**kwargs)
         context['comment_count'] = Comment.objects.count()
-        print(ppp)
         return context
 

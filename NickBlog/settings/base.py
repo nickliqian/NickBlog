@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'article',
     'DjangoUeditor',
+    'dj_pagination',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -50,7 +51,18 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'dj_pagination.middleware.PaginationMiddleware',
 )
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.request"
+)
+# 无效页面抛出404错误
+PAGINATION_INVALID_PAGE_RAISES_404 = True
 
 ROOT_URLCONF = 'NickBlog.urls'
 

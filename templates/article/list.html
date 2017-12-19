@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load staticfiles %}
+{% load staticfiles pagination_tags %}
 
 {% block headtitle %}
     <title>所有文章</title>
@@ -9,10 +9,11 @@
 {% endblock morehead %}
 
 {% block content %}
+                {% autopaginate object_list 5 as object_list_list %}
 
                 <div class="col-md-8 blog-main">
 
-                    {% for object in object_list %}
+                    {% for object in object_list_list %}
 
                     <article class="blog-post">
 
@@ -49,7 +50,13 @@
                     <HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#987cb9 SIZE=3>
                     {% endfor %}
 
+                    <div>
+
+                        {% paginate using 'article\pagination.html' %}
+                    </div>
+
                 </div>
+
 
 
 {% endblock content %}
