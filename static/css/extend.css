@@ -65,3 +65,20 @@ animation:spiderRun 25s;
 0%   {left:0px; top:0px;}
 100%  {left:700px; top:0px;}
 }
+
+@media (max-width: 767px) {
+  /*donghua*/
+  #logo
+  {
+  position:relative;
+  animation:none;
+  -moz-animation:none; /* Firefox */
+  -webkit-animation:none; /* Safari and Chrome */
+  -o-animation:none; /* Opera */
+  }
+
+  #logo {
+  display: none;
+  }
+}
+

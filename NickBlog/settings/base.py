@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'haystack',
     'article',
     'DjangoUeditor',
     'dj_pagination',
@@ -101,7 +102,7 @@ MYSQL_OPTIONS = {
     SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED;
     """
 }
-
+# MySQL数据库引擎
 DATABASES = {
     'default': {
         # 事务回调API transaction_hooks
@@ -120,6 +121,17 @@ DATABASES = {
         }
     }
 }
+
+
+# 搜索设置
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
+    },
+}
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 8
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 
 # Internationalization

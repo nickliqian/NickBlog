@@ -260,16 +260,6 @@ Mobile version of the navigation
     border-radius: 6px;
   }
 
-  /*donghua*/
-  #logo
-  {
-  position:relative;
-  animation:none;
-  -moz-animation:none; /* Firefox */
-  -webkit-animation:none; /* Safari and Chrome */
-  -o-animation:none; /* Opera */
-  }
-
   .clean-nav .navbar-collapse {
     max-height: none;
   }

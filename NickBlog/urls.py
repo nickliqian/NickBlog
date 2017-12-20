@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import include, url, patterns
 from django.contrib import admin
 from django.conf import settings
+from article.search_views import MySearchView
+
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -24,6 +26,8 @@ urlpatterns = [
     url(r'^', include("article.urls", namespace="indexEmpty")),
     # url(r'^index/', include("article.urls", namespace="index")),
     url(r'^article/', include("article.urls", namespace="article")),
+    # search
+    url(r'^search/', MySearchView(), name='haystack_search'),
 ]
 
 # debug 添加到全局url
