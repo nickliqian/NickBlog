@@ -3,24 +3,21 @@ import six
 
 DEBUG = True
 
-DEBUG_TOOLBAR_PATCH_SETTINGS = False
-
 # 添加调试工具和扩展工具
 INSTALLED_APPS = INSTALLED_APPS + (
     'debug_toolbar.apps.DebugToolbarConfig',
     'django_extensions',
-    'silk',
 )
 
-SILKY_PYTHON_PROFILER = True
-SILKY_PYTHON_PROFILER_BINARY = True
-SILKY_STORAGE_CLASS = 'silk.storage.ProfilerResultStorage'
-SILKY_PYTHON_PROFILER_RESULT_PATH = os.path.join(BASE_DIR, 'static/profiling')
+# @@@@@@@@@第三方插件配置@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+# debug_toolbar 配置
+DEBUG_TOOLBAR_PATCH_SETTINGS = False
 
 # 添加调试工具中间件
 MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
-    'silk.middleware.SilkyMiddleware',
 )
 
 # 使用调试工具的IP

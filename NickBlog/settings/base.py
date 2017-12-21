@@ -31,16 +31,23 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    # django-suit Admin界面美化插件
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # django-haystack 全局搜索插件
     'haystack',
     'article',
+    # DjangoUeditor 富文本编辑器插件
     'DjangoUeditor',
+    # dj-pagination 自动分页插件
     'dj_pagination',
+    # django-silk http请求和sql查询分析插件
+    'silk',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -52,18 +59,21 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    # 分页中间件
     'dj_pagination.middleware.PaginationMiddleware',
+    # 请求分析中间件
+    'silk.middleware.SilkyMiddleware',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
+    # 启用dj-paginate
     "django.core.context_processors.auth",
     "django.core.context_processors.debug",
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
-    "django.core.context_processors.request"
+    # django-suit Admin界面美化
+    "django.core.context_processors.request",
 )
-# 无效页面抛出404错误
-PAGINATION_INVALID_PAGE_RAISES_404 = True
 
 ROOT_URLCONF = 'NickBlog.urls'
 
@@ -122,20 +132,6 @@ DATABASES = {
     }
 }
 
-
-# 搜索设置
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        # 'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-        'ENGINE': 'article.whoosh_cn_backend.WhooshEngine',
-        # 注意这个路径，路径错了就无法生成索引！
-        'PATH': os.path.join(os.path.dirname(os.path.dirname(__file__)), 'whoosh_index'),
-    },
-}
-HAYSTACK_SEARCH_RESULTS_PER_PAGE = 8
-HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
@@ -170,4 +166,63 @@ STATICFILES_FINDERS = ("django.contrib.staticfiles.finders.FileSystemFinder",
                        "django.contrib.staticfiles.finders.AppDirectoriesFinder",)
 
 
+# @@@@@@@@@第三方插件配置@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
+# 分页插件 无效页面抛出404错误
+PAGINATION_INVALID_PAGE_RAISES_404 = True
+
+# 搜索设置
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        # 'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'ENGINE': 'article.whoosh_cn_backend.WhooshEngine',
+        # 注意这个路径，路径错了就无法生成索引！
+        'PATH': os.path.join(os.path.dirname(os.path.dirname(__file__)), 'whoosh_index'),
+    },
+}
+# 设置搜索结果每页多少条
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 8
+# 设置信号处理器
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+# silk cprofile文件配置
+SILKY_PYTHON_PROFILER = True
+SILKY_PYTHON_PROFILER_BINARY = True
+SILKY_STORAGE_CLASS = 'silk.storage.ProfilerResultStorage'
+SILKY_PYTHON_PROFILER_RESULT_PATH = os.path.join(BASE_DIR, 'static/profiling')
+
+# suit界面配置
+# Django Suit configuration example
+SUIT_CONFIG = {
+    # header
+    'ADMIN_NAME': 'Nick CMS',
+    # 左上角时间显示设置 https://docs.djangoproject.com/en/dev/ref/templates/builtins/#std:templatefilter-date
+    'HEADER_DATE_FORMAT': 'Y-m-j l',
+    'HEADER_TIME_FORMAT': 'H:i',
+
+    # forms
+    # 自动将星号符号添加*到每个必填字段标签的末尾
+    # 'SHOW_REQUIRED_ASTERISK': True,  # Default True
+    # 离开未保存的表单时会提醒,设置为False则不会保存就离开
+    # 'CONFIRM_UNSAVED_CHANGES': True, # Default True
+
+    # menu
+    # 'SEARCH_URL': '/admin/auth/user/',
+    'MENU_ICONS': {
+       'sites': 'icon-leaf',
+       'auth': 'icon-lock',
+    },
+    # 'MENU_OPEN_FIRST_CHILD': True, # Default True
+    # 排除某个app和model
+    # 'MENU_EXCLUDE': ('auth.group',),
+    # 使用自定义菜单 针对左侧栏位
+    'MENU': (
+        'sites',
+        {'app': 'article', 'icon': 'icon-star', 'label': '文章'},
+        {'label': 'Settings', 'icon': 'icon-cog', 'models': ('auth.user', 'auth.group')},
+        {'app': 'auth', 'icon': 'icon-lock', 'models': ('user', 'group')},
+    ),
+    # misc
+    # 每页列出多少条 指定所有模型的列出
+    # 'LIST_PER_PAGE': 15,
+}
