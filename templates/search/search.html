@@ -1,22 +1,8 @@
 {% extends 'base.html' %}
-{% load highlight %}
+{% load highlight highlightCoverHead %}
 
 {% block content %}
     <div class="col-md-8">
-
-
-        <!--<form method="get" action="/search/">-->
-            <!--<table>-->
-                <!--{{ form.as_table }}-->
-                <!--<tr>-->
-                    <!--<td>&nbsp;</td>-->
-                    <!--<td>-->
-                        <!--<input type="submit" value="Search">-->
-                    <!--</td>-->
-                <!--</tr>-->
-            <!--</table>-->
-        <!--</form>-->
-
 
         <div class="searchResult">
             {% if query %}
@@ -26,8 +12,13 @@
 
                 {% for result in page.object_list %}
                     <p class="searchContentDistance">
-                        <h3><a class="searchTitleColor" href="{% url result.object.get_obsolute_url result.object.id %}">{% highlight result.object.title with query %}</a></h3>
-                        <p href="{{ result.object.get_absolute_url }}">{% highlight result.object.content with query %}</p>
+                        <h3>
+                            <a class="searchTitleColor" href="{% url result.object.get_obsolute_url result.object.id %}">
+                                {% highlight_cover_head result.object.title with query max_length 200 start_head True %}
+                            </a>
+                        </h3>
+                        <p>作者：{% highlight result.object.author with query %}</p>
+                        <p>{% highlight result.object.content with query %}</p>
                         <!--<a class="serachResultCheckAll" href="{{ result.object.get_absolute_url }}"><i>查看全部</i></a>-->
                     </p>
                 {% empty %}
@@ -47,8 +38,6 @@
                 <p>输入关键词试试？</p>
             {% endif %}
         </div>
-
-
 
     </div>
 {% endblock %}

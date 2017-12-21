@@ -35,6 +35,7 @@ INSTALLED_APPS = (
     'suit',
     'django.contrib.admin',
     'django.contrib.auth',
+    # 'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -48,7 +49,10 @@ INSTALLED_APPS = (
     'dj_pagination',
     # django-silk http请求和sql查询分析插件
     'silk',
+    'account',
 )
+
+AUTH_USER_MODEL = 'account.Account'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -186,10 +190,10 @@ HAYSTACK_SEARCH_RESULTS_PER_PAGE = 8
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 # silk cprofile文件配置
-SILKY_PYTHON_PROFILER = True
-SILKY_PYTHON_PROFILER_BINARY = True
-SILKY_STORAGE_CLASS = 'silk.storage.ProfilerResultStorage'
-SILKY_PYTHON_PROFILER_RESULT_PATH = os.path.join(BASE_DIR, 'static/profiling')
+# SILKY_PYTHON_PROFILER = True
+# SILKY_PYTHON_PROFILER_BINARY = True
+# SILKY_STORAGE_CLASS = 'silk.storage.ProfilerResultStorage'
+# SILKY_PYTHON_PROFILER_RESULT_PATH = os.path.join(BASE_DIR, 'static/profiling')
 
 # suit界面配置
 # Django Suit configuration example
