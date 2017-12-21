@@ -33,6 +33,12 @@
     <script src="{% static 'js/modernizr.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/extend.css' %}" id="theme-styles">
 
+    <style>
+        span.highlighted {
+            color: red;
+        }
+    </style>
+
 {% block morehead %}
 {% endblock morehead %}
 
@@ -89,14 +95,20 @@
                     <a href="http://fontawesome.io/icons/" title="获取这组图标" target="_blank"><i class="fa fa-user"></i></a>  分享工作、生活和学习的点滴。
                 </div>
 
+
                 <div class="clean-searchbox">
-                    <form action="#" method="get" accept-charset="utf-8">
-                        <input class="searchfield" id="searchbox" type="text" placeholder="Search">
+                    <form action="/search/" method="get" accept-charset="utf-8">
+                        {% if query %}
+                            <input class="searchfield" id="searchbox" type="text" placeholder="Search" name="q" value="{{ query }}">
+                        {% else %}
+                            <input class="searchfield" id="searchbox" type="text" placeholder="Search" name="q">
+                        {% endif %}
                         <button class="searchbutton" type="submit">
                             <i class="fa fa-search"></i>
                         </button>
                     </form>
                 </div>
+
             </div>
         </div>
     </header>

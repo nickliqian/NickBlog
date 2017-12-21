@@ -126,8 +126,10 @@ DATABASES = {
 # 搜索设置
 HAYSTACK_CONNECTIONS = {
     'default': {
-        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-        'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
+        # 'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'ENGINE': 'article.whoosh_cn_backend.WhooshEngine',
+        # 注意这个路径，路径错了就无法生成索引！
+        'PATH': os.path.join(os.path.dirname(os.path.dirname(__file__)), 'whoosh_index'),
     },
 }
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 8

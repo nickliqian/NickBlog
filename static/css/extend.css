@@ -82,3 +82,42 @@ animation:spiderRun 25s;
   }
 }
 
+div form .searchBoder {
+    background-color: #f2f2f2;
+}
+
+.searchboxLocation {
+    float: left;
+}
+
+.searchResult {
+    margin-top: 30px;
+}
+
+.searchResultHighLight {
+    color: red;
+}
+
+.searchTitleColor {
+    color: #0b15cc;
+}
+
+.serachResultCheckAll {
+    float: right;
+}
+
+.serachResultCheckAll:hover {
+    color: red;
+}
+
+.searchContentDistance {
+    margin-bottom: 30px;
+}
+
+.searchResultPage {
+    margin: 50px 0px 50px 0px;
+}
+
+.pageHover:hover {
+    color: red;
+}

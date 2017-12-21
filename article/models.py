@@ -30,6 +30,10 @@ class Article(TimeStampMixin, LastSeenMixin, models.Model):
     def __str__(self):
         return "{}-{}".format(self.title, self.article_type)
 
+    def get_obsolute_url(self):
+
+        return 'article:article-detail'
+
     class Meta:
         verbose_name = '文章'
         verbose_name_plural = '文章'
