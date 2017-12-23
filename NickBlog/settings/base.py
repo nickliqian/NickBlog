@@ -29,7 +29,6 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = (
     # django-suit Admin界面美化插件
     'suit',
@@ -52,7 +51,18 @@ INSTALLED_APPS = (
     'account',
 )
 
+# 扩展AbstractUser模型，构建新的account应用需要的配置
 AUTH_USER_MODEL = 'account.Account'
+# 不记录跳转来的页面，登陆/注销后直接回到上一个页面
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
+# 设置模拟发送邮件到终端（对于数据库中有的邮箱地址）
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# 添加自定义用户邮件验证后端
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'account.backends.EmailBackend',
+)
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -223,8 +233,9 @@ SUIT_CONFIG = {
     'MENU': (
         'sites',
         {'app': 'article', 'icon': 'icon-star', 'label': '文章'},
-        {'label': 'Settings', 'icon': 'icon-cog', 'models': ('auth.user', 'auth.group')},
-        {'app': 'auth', 'icon': 'icon-lock', 'models': ('user', 'group')},
+        {'app': 'account', 'icon': 'icon-lock', 'label': '用户'},
+        {'app': 'auth', 'icon': 'icon-cog', 'label': '用户组', 'models': ('auth.group', )},
+
     ),
     # misc
     # 每页列出多少条 指定所有模型的列出

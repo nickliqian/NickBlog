@@ -5,3 +5,5 @@ TODO: 学会使用扩展包
 TODO：主页的常用查询加入缓存
 TODO：完成全文搜索功能
 TODO：使用SUIT美化ADMIN
+TODO: 最近浏览
+TODO： 注册/认证系统 github/微信
