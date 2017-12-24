@@ -7,7 +7,7 @@ from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 
 from article.models import Article, Comment
-from mylib.myforms import CustomForm
+from mylib.myforms import CommentForm
 
 
 class IndexView(TemplateView):
@@ -51,7 +51,7 @@ class ArticleDetailView(DetailView):
         obj.view_count += 1
         obj.save()
         context['article_comment'], context['comment_count'] = self.comment()
-        comment_form = CustomForm()
+        comment_form = CommentForm()
         context['form'] = comment_form
         return context
 
