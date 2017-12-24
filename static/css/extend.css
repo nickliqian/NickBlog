@@ -121,3 +121,14 @@ div form .searchBoder {
 .pageHover:hover {
     color: red;
 }
+
+.writeCommentUser {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.commentGuestLogin {
+    color: #00a0e9;
+    text-decoration: underline;
+}

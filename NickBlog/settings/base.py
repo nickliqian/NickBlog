@@ -56,6 +56,8 @@ AUTH_USER_MODEL = 'account.Account'
 # 不记录跳转来的页面，登陆/注销后直接回到上一个页面
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/account/login/'
+LOGOUT_URL = '/account/logout/'
 # 设置模拟发送邮件到终端（对于数据库中有的邮箱地址）
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # 添加自定义用户邮件验证后端
@@ -107,6 +109,23 @@ TEMPLATES = [
         },
     },
 ]
+
+# 设置缓存后端：使用MemcachedCache
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+        # 缓存过期时间
+        'TIMEOUT': 60,
+        # 可选项
+        'OPTIONS': {
+            # 缓存允许的最大条目数
+            'MAX_ENTRIES': 100,
+            # 达到 MAX_ENTRIES 的时候,被删除的条目比率 1/MAX_ENTRIES
+            'CULL_FREQUENCY': 2,
+        }
+    }
+}
 
 WSGI_APPLICATION = 'NickBlog.wsgi.application'
 
@@ -204,6 +223,9 @@ HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 # SILKY_PYTHON_PROFILER_BINARY = True
 # SILKY_STORAGE_CLASS = 'silk.storage.ProfilerResultStorage'
 # SILKY_PYTHON_PROFILER_RESULT_PATH = os.path.join(BASE_DIR, 'static/profiling')
+# 必须登陆才能访问silk
+SILKY_AUTHENTICATION = True  # User must login
+SILKY_AUTHORISATION = True  # User must have permissions
 
 # suit界面配置
 # Django Suit configuration example

@@ -1,4 +1,4 @@
-{% load staticfiles aside_func %}
+{% load staticfiles aside_func cache %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -138,7 +138,11 @@
 
             {% block aside %}
 
-                {% aside_tag %}
+{#                {% cache 500 aside_tag %}#}
+
+                    {% aside_tag %}
+
+{#                {% endcache %}#}
 
             {% endblock aside %}
         </div>

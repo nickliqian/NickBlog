@@ -3,10 +3,11 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.base import RedirectView
 from django.http import Http404
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 
 from article.models import Article, Comment
-from mylib.myforms import CommentForm
+from mylib.myforms import CustomForm
 
 
 class IndexView(TemplateView):
@@ -50,7 +51,7 @@ class ArticleDetailView(DetailView):
         obj.view_count += 1
         obj.save()
         context['article_comment'], context['comment_count'] = self.comment()
-        comment_form = CommentForm()
+        comment_form = CustomForm()
         context['form'] = comment_form
         return context
 
@@ -65,11 +66,20 @@ class ArticleDetailRedirectView(RedirectView):
         return super(ArticleDetailRedirectView, self).get_redirect_url(*args, **kwargs)
 
     def post(self, request, *args, **kwargs):
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            form.save()
+        # 判断登陆状态
+        if not request.user.is_authenticated():
+            # 判断是否有article参数
+            if not request.POST.get('article'):
+                return redirect('/account/login/?next=/article/detail/%s/' % request.POST.get('article'))
+            else:
+                return redirect('/')
+        else:
+            form = CommentForm(request.POST)
+            # 验证数据完整性
+            if form.is_valid():
+                form.save()
 
-        return self.get(request, *args, **kwargs)
+            return self.get(request, *args, **kwargs)
 
 
 class ArticleListView(ListView):

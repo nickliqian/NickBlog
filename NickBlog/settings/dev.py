@@ -10,6 +10,9 @@ INSTALLED_APPS = INSTALLED_APPS + (
 )
 
 # @@@@@@@@@第三方插件配置@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# 开发环境下任何用户都有访问silk的权限
+SILKY_AUTHENTICATION = False  # User must login
+SILKY_AUTHORISATION = False  # User must have permissions
 
 
 # debug_toolbar 配置

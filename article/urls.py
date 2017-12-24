@@ -10,10 +10,9 @@ urlpatterns = [
     url(r'^detail/(?P<pk>[-\w]+)/$', ArticleDetailView.as_view(), name='article-detail'),
     # 列表页
     url(r'^all/$', ArticleListView.as_view(), name='article-list'),
-    # 详细页
+    # 详细页评论跳转
     url(r'^redirect_detail/(?P<pk>[-\w]+)/$', ArticleDetailRedirectView.as_view(), name='redirect-detail'),
     # 搜索
     # url(r'^abc$', SearchView(), name='haystack_search'),
-
 ]
 

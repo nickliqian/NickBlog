@@ -1,6 +1,7 @@
 from django.db import models
 from DjangoUeditor.models import UEditorField
 from mylib.mixin import TimeStampMixin, LastSeenMixin
+from account.models import Account
 
 
 # 文章模型
@@ -76,16 +77,20 @@ class Comment(TimeStampMixin, models.Model):
     # 留言内容
     content = UEditorField(height=300, width=1000, blank=False, imagePath="uploads/blog/images/",
                            toolbars='besttome', filePath='uploads/blog/files/')
-    # 用户名
-    user_name = models.CharField(max_length=50, default="匿名")
-    # E-mail
-    user_e_mail = models.EmailField(max_length=254, blank=True)
+    # 用户id
+    userOfComment = models.ForeignKey(Account, related_name="comment2account", null=True)
     # 逻辑删除
     isDelete = models.BooleanField(default=False)
 
     def __str__(self):
-        return "{}-{}-{}".format(self.created, self.article, self.user_name)
+        return "{}-{}-{}".format(self.created, self.article, self.userOfComment)
 
     class Meta:
         verbose_name = '文章评论'
         verbose_name_plural = '文章评论'
+
+    # def save(self, *args, **kwargs):
+    #     dic = super(Comment, self).save(*args, **kwargs)
+    #     dic['user_name'] = self.userOfComment.username
+    #     return dic
+

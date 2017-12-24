@@ -1,4 +1,5 @@
 from django import template
+# from django.views.decorators.cache import cache_page
 from article.models import Article, TagType
 
 
@@ -20,6 +21,7 @@ def get_all_tags():
     return all_tags
 
 
+# @cache_page(15*60)
 @register.inclusion_tag('article/aside.html')
 def aside_tag():
 

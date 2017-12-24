@@ -73,7 +73,7 @@
                             <header class="clearfix comment_header">
                                 <img src="{% static 'img/avatar.png' %}" alt="UserImg" class="avatar">
                                 <div class="meta">
-                                    <h3><a href="#">{{ comment.user_name }}</a></h3>
+                                    <h3><a href="#">{{ comment.userOfComment.username }}</a></h3>
                                     <span class="date">
                                         {{ comment.created }}
                                     </span>
@@ -97,28 +97,37 @@
 
                         <h2><i class="fa fa-pencil"></i> 添加评论</h2>
 
-                    <form action="{% url 'article:redirect-detail' object.id %}" method="post" accept-charset="utf-8">
-                        {% csrf_token %}
-                        <div class="row">
-                            <div class="col-md-6">
-                                <input type="text" name="user_name" id="comment-name" placeholder="你的大名" class="form-control input-lg">
-                            </div>
-                            <div class="col-md-6">
-                                <input type="email" name="user_e_mail" id="comment-email" placeholder="邮箱地址(可选)" class="form-control input-lg">
-                            </div>
-                        </div>
+                        {% if user.is_authenticated %}
+                            <form action="{% url 'article:redirect-detail' object.id %}" method="post" accept-charset="utf-8">
+                                {% csrf_token %}
+                                <div class="row"><span class="writeCommentUser">用户 {{ user.username }}：</span></div>
 
-                        <input type="text" name="article" id="comment-url" value="{{ object.id }}" style="display: none;">
+                                <input type="text" name="article" id="comment-url" value="{{ object.id }}" style="display: none;">
+                                <input type="text" name="userOfComment" id="comment-url" value="{{ user.id }}" style="display: none;">
 
-                        <textarea rows="5" name="content" id="comment-body" placeholder="输入评论" class="form-control input-lg"></textarea>
+                                <textarea rows="5" name="content" id="comment-body" placeholder="输入评论" class="form-control input-lg"></textarea>
 
-                        <div class="buttons clearfix">
-                            <button type="submit" class="btn btn-xlarge btn-clean-one" onClick="javascript:return checkBlank();">提交评论</button>
-                       </div>
-                    </form>
+                                <div class="buttons clearfix">
+                                    <button type="submit" class="btn btn-xlarge btn-clean-one" onClick="javascript:return checkBlank();">提交评论</button>
+                               </div>
 
-                    </aside>
-                </div>
+
+
+                            </form>
+                        {% else %}
+                            <form action="" method="" accept-charset="utf-8">
+                                <div class="row"><span class="writeCommentUser">游客，<a href="/account/login/?next={{ request.path }}" class="commentGuestLogin">请登陆</a></span></div>
+                                <textarea rows="5" name="content" id="comment-body" placeholder="输入评论" class="form-control input-lg" disabled="disabled"></textarea>
+                                <div class="buttons clearfix">
+                                    <button type="submit" class="btn btn-xlarge btn-clean-one" onClick="javascript:return false;" disabled="disabled">请登陆后评论</button>
+                               </div>
+                            </form>
+                        {% endif %}
+
+        </aside>
+
+
+        </div>
 
 
 {% endblock content %}
