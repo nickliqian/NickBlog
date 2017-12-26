@@ -39,6 +39,9 @@ class Article(TimeStampMixin, LastSeenMixin, models.Model):
         verbose_name = '文章'
         verbose_name_plural = '文章'
 
+    def get_comment_count(self):
+        return Comment.objects.filter(article=self).count()
+
     # 文章类型模型
 
 

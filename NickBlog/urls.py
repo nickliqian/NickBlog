@@ -29,7 +29,9 @@ urlpatterns = [
     # search
     url(r'^search/', MySearchView(), name='haystack_search'),
     url('^account/', include('django.contrib.auth.urls')),
-    url('^account/', include('account.urls', namespace='account'))
+    url('^account/', include('account.urls', namespace='account')),
+    # QA system
+    url(r'^qa/', include('qa.urls')),
 ]
 
 # debug 添加到全局url

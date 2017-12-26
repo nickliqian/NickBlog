@@ -49,6 +49,11 @@ INSTALLED_APPS = (
     # django-silk http请求和sql查询分析插件
     'silk',
     'account',
+    # QA system
+    'qa',
+    'taggit',
+    'hitcount',
+    'django_markdown',
 )
 
 # 扩展AbstractUser模型，构建新的account应用需要的配置
@@ -262,4 +267,22 @@ SUIT_CONFIG = {
     # misc
     # 每页列出多少条 指定所有模型的列出
     # 'LIST_PER_PAGE': 15,
+}
+
+# QA system
+QA_SETTINGS = {
+    'qa_messages': True,
+    'qa_description_optional': False,
+    # 积分系统
+    'reputation': {
+        'CREATE_QUESTION': 5,
+        'CREATE_ANSWER': 5,
+        'CREATE_ANSWER_COMMENT': 2,
+        'CREATE_QUESTION_COMMENT': 2,
+        'ACCEPT_ANSWER': 5,
+        'UPVOTE_QUESTION': 1,
+        'UPVOTE_ANSWER': 1,
+        'DOWNVOTE_QUESTION': 1,
+        'DOWNVOTE_ANSWER': 1,
+    }
 }
