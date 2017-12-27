@@ -1,6 +1,10 @@
-{% load staticfiles %}
+{% extends "base.html" %}
+{% load staticfiles aside_func cache %}
 
-<head>
+{% block morehead %}
+
+    {{ block.super }}
+
     <link rel="icon" type="image/png" href="{% static 'img/f_icon.ico' %}">
     <script src="{% static 'js/jquery-2.0.3.min.js' %}"></script>
     <link href="{% static 'css/LobsterFamily.css' %}" rel='stylesheet' type='text/css'>
@@ -31,9 +35,13 @@
     {%block extra_js %}
     {% endblock extra_js %}
 
-</head>
+{% endblock morehead %}
 
-<div class="topbar"></div>
+
+{% block content %}
+
+
+{#<div class="topbar"></div>#}
 <div class="container">
     <title>QA版块</title>
 
@@ -44,9 +52,9 @@
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加问题
         </a>
         <h1><a href="{% url 'qa_index' %}"><img width="50px" src="http://icons.iconarchive.com/icons/seanau/flat-app/256/Questionmark-icon.png"/>
-            <orange>Simple QA</orange>
+            <orange>QA板块</orange>
         </a>
-            <small>Open Questions</small>
+            <small>三人行必有我师</small>
         </h1>
     </div>
     <div class="container">
@@ -55,9 +63,9 @@
         <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
         {% endfor %}
         {% endif %}
-        {% block content %}
+        {% block contentqa %}
 
-        {% endblock content %}
+        {% endblock contentqa %}
         <div id="search">
             <button type="button" class="close">×</button>
             <form method="GET" action="{% url 'qa_search' %}">
@@ -67,49 +75,58 @@
 
         </div>
     </div>
-    <hr>
-    <center>
-        <a href="http://www.djangoproject.com/"><img
-                src="https://www.djangoproject.com/m/img/badges/djangoproject120x25.gif" border="0"
-                alt="A Django project." title="A Django project."/></a> ·
-        <a href="https://github.com/swappsco/django-qa/">Github</a> ·
-        <a data-toggle="modal" data-target="#apiModal">API</a> ·
-        <small><a href="/admin">Admin Panel</a></small>
-    </center>
-    <br/><br/>
+
+    {% block aside %}
+
+    {% endblock aside %}
+{% endblock content %}
 
 
-    <!-- Modal -->
-    <div class="modal fade" id="apiModal" tabindex="-1" role="dialog" aria-labelledby="APIModal" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel"><span class="glyphicon glyphicon-cloud"
-                                                                    aria-hidden="true"></span> API Access</h4>
-                </div>
-                <div class="modal-body">
-                    <ul>
-                        <li>
-                            <b>List of Questions</b>
-                            <br/>Retrieve the list of questions.
-                            <br/>json URL : <code class="custom-code">http://djangoqa.azurewebsites.net/api/questions/?format=json</code>
-                        </li>
-                        <br/>
-                        <li>
-                            <b>List of Users</b>
-                            <br/>Retrieve the list of users.
-                            <br/>json URL : <code class="custom-code">http://djangoqa.azurewebsites.net/api/users/?format=json</code>
-                        </li>
-                    </ul>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+
+{#    <hr>#}
+{#    <center>#}
+{#        <a href="http://www.djangoproject.com/"><img#}
+{#                src="https://www.djangoproject.com/m/img/badges/djangoproject120x25.gif" border="0"#}
+{#                alt="A Django project." title="A Django project."/></a> ·#}
+{#        <a href="https://github.com/swappsco/django-qa/">Github</a> ·#}
+{#        <a data-toggle="modal" data-target="#apiModal">API</a> ·#}
+{#        <small><a href="/admin">Admin Panel</a></small>#}
+{#    </center>#}
+{#    <br/><br/>#}
+
+
+{#    <!-- Modal -->#}
+{#    <div class="modal fade" id="apiModal" tabindex="-1" role="dialog" aria-labelledby="APIModal" aria-hidden="true">#}
+{#        <div class="modal-dialog">#}
+{#            <div class="modal-content">#}
+{#                <div class="modal-header">#}
+{#                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span#}
+{#                            aria-hidden="true">&times;</span></button>#}
+{#                    <h4 class="modal-title" id="myModalLabel"><span class="glyphicon glyphicon-cloud"#}
+{#                                                                    aria-hidden="true"></span> API Access</h4>#}
+{#                </div>#}
+{#                <div class="modal-body">#}
+{#                    <ul>#}
+{#                        <li>#}
+{#                            <b>List of Questions</b>#}
+{#                            <br/>Retrieve the list of questions.#}
+{#                            <br/>json URL : <code class="custom-code">http://djangoqa.azurewebsites.net/api/questions/?format=json</code>#}
+{#                        </li>#}
+{#                        <br/>#}
+{#                        <li>#}
+{#                            <b>List of Users</b>#}
+{#                            <br/>Retrieve the list of users.#}
+{#                            <br/>json URL : <code class="custom-code">http://djangoqa.azurewebsites.net/api/users/?format=json</code>#}
+{#                        </li>#}
+{#                    </ul>#}
+{#                </div>#}
+{#                <div class="modal-footer">#}
+{#                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
 
 

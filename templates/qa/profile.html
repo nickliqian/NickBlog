@@ -1,15 +1,15 @@
 {% extends 'qa/base.html' %}
 {% load django_markdown %}
 
-{% block content %}
-<h2 class="pull-right">积分: {{ user.points }}</h1>
-<ul>
-  <li><b>站点地址 :</b> {{ user.website }} </li>
-   <li><b>邮箱地址 :</b> {{ user.user.email }} </li>
-   <li><b>注册时间 :</b> {{ user.user.date_joined }} </li>
-   <li><b>最佳登录 :</b> {{ user.user.last_login }} </li>
-   <li><b>使用状态 :</b> {{ user.user.is_active }} </li>
-<ul>
+{% block contentqa %}
+    <h2 class="pull-right">积分: {{ user.points }}</h1>
+    <ul>
+    <li><b>站点地址 :</b> {{ user.website }} </li>
+    <li><b>邮箱地址 :</b> {{ user.user.email }} </li>
+    <li><b>注册时间 :</b> {{ user.user.date_joined }} </li>
+    <li><b>最佳登录 :</b> {{ user.user.last_login }} </li>
+    <li><b>使用状态 :</b> {{ user.user.is_active }} </li>
+    <ul>
 
-</div>
-{% endblock content %}
+    </div>
+{% endblock contentqa %}

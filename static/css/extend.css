@@ -45,25 +45,25 @@ animation:spiderRun 25s;
 @keyframes spiderRun
 {
 0%   {left:0px; top:0px;}
-100%  {left:700px; top:0px;}
+100%  {left:500px; top:0px;}
 }
 
 @-moz-keyframes spiderRun /* Firefox */
 {
 0%   {left:0px; top:0px;}
-100%  {left:700px; top:0px;}
+100%  {left:500px; top:0px;}
 }
 
 @-webkit-keyframes spiderRun /* Safari and Chrome */
 {
 0%   {left:0px; top:0px;}
-100%  {left:700px; top:0px;}
+100%  {left:500px; top:0px;}
 }
 
 @-o-keyframes spiderRun /* Opera */
 {
 0%   {left:0px; top:0px;}
-100%  {left:700px; top:0px;}
+100%  {left:500px; top:0px;}
 }
 
 @media (max-width: 767px) {
@@ -131,4 +131,8 @@ div form .searchBoder {
 .commentGuestLogin {
     color: #00a0e9;
     text-decoration: underline;
+}
+
+.contrainerHeight {
+    height: 97.6px;
 }

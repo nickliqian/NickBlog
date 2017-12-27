@@ -1,7 +1,7 @@
 {% extends 'qa/base.html' %}
 {% load django_markdown %}
 
-{% block content %}
+{% block contentqa %}
 
   {% if message %}
     <strong>Enter a valid Answer!</strong>
@@ -17,4 +17,4 @@
 
 {% markdown_editor "#ans" %}
 {% markdown_media %}
-{% endblock content %}
+{% endblock contentqa %}
