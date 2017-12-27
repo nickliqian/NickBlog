@@ -20,9 +20,6 @@
             return false;
         }
 
-
-
-
     }
 </script>
 {% endblock morehead %}
@@ -42,7 +39,7 @@
                             <h1><b>{{ object.title }}</b></h1>
                             <div class="meta">
                                 <i class="fa fa-user"></i> {{ object.author }}
-                                <i class="fa fa-calendar"></i> {{ object.created }}
+                                <i class="fa fa-calendar"></i> {{ object.created|date:"Y/m/j H:i" }}
                                 <i class="fa fa-eye"></i> {{ object.view_count }}
                                 <i class="fa fa-comments"></i>
                                     <span class="data">

@@ -38,6 +38,8 @@ class Article(TimeStampMixin, LastSeenMixin, models.Model):
     class Meta:
         verbose_name = '文章'
         verbose_name_plural = '文章'
+        # 指定默认排序规则
+        ordering = ['id']
 
     def get_comment_count(self):
         return Comment.objects.filter(article=self).count()
@@ -91,6 +93,8 @@ class Comment(TimeStampMixin, models.Model):
     class Meta:
         verbose_name = '文章评论'
         verbose_name_plural = '文章评论'
+        # 指定默认排序规则
+        ordering = ['id']
 
     # def save(self, *args, **kwargs):
     #     dic = super(Comment, self).save(*args, **kwargs)

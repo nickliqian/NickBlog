@@ -22,7 +22,7 @@
 
                             <div class="meta">
                                 <i class="fa fa-user"></i> {{ object.author }}
-                                <i class="fa fa-calendar"></i> {{ object.created }}
+                                <i class="fa fa-calendar"></i> {{ object.created|date:"Y/m/j H:i" }}
                                 <i class="fa fa-eye"></i> {{ object.view_count }}
                                 <i class="fa fa-comments"></i>
                                     <span class="data">
@@ -52,11 +52,9 @@
 
                     <div>
 
-                        {% paginate using 'article\pagination.html' %}
+                        {% paginate using 'pagination\article\pagination.html' %}
                     </div>
 
                 </div>
-
-
 
 {% endblock content %}

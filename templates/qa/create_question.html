@@ -1,6 +1,11 @@
 {% extends 'qa/base.html' %}
 {% load django_markdown %}
 
+{% block extra_js %}
+  {% markdown_editor "#id_description" %}
+  {% markdown_media %}
+{% endblock extra_js %}
+
 {% block content %}
 
   {% if message %}
@@ -17,7 +22,4 @@
 
 {% endblock content %}
 
-{% block extra_js %}
-  {% markdown_editor "#id_description" %}
-  {% markdown_media %}
-{% endblock extra_js %}
+

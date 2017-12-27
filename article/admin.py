@@ -5,6 +5,10 @@ from article.models import Article, ArticleType, Comment, TagType
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('title', 'article_type', 'created')
     filter_horizontal = ('article_tag',)
+    list_filter = ('created', )
+    ordering = ('-created',)
+    date_hierarchy = 'created'
+    raw_id_fields = ('article_type', )
 
 
 class ArticelTypeAdmin(admin.ModelAdmin):

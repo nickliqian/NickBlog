@@ -2,6 +2,16 @@
 {% load django_markdown %}
 {% load staticfiles %}
 
+
+{% block extra_js %}
+    <!--<script src="{% static 'js/jquery-2.0.3.min.js' %}"></script>-->
+    <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+    </script>
+{% endblock extra_js %}
+
 {% block content %}
 
 {% if question.closed %}
@@ -145,11 +155,4 @@
 
 
 {% endblock content %}
-{% block extra_js %}
-<script src="{% static 'js/jquery-2.0.3.min.js' %}"></script>
-<script>
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
-</script>
-{% endblock extra_js %}
+

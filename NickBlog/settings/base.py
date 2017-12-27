@@ -86,24 +86,14 @@ MIDDLEWARE_CLASSES = (
     'silk.middleware.SilkyMiddleware',
 )
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    # 启用dj-paginate
-    "django.core.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.i18n",
-    "django.core.context_processors.media",
-    # django-suit Admin界面美化
-    "django.core.context_processors.request",
-)
-
 ROOT_URLCONF = 'NickBlog.urls'
 
+# 内置的Jinja2： django.template.backends.jinja2.Jinja2
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
-        'APP_DIRS': True,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # 可填多个路径，模板引擎按顺序查找模板源文件
+        'APP_DIRS': True,  # 是否在按照的应用中查找模板，不完全受DIRS的限制
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -114,6 +104,17 @@ TEMPLATES = [
         },
     },
 ]
+
+# 模板上下文处理器
+TEMPLATE_CONTEXT_PROCESSORS = (
+    # 启用dj-paginate
+    "django.core.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    # django-suit Admin界面美化
+    "django.core.context_processors.request",
+)
 
 # 设置缓存后端：使用MemcachedCache
 CACHES = {

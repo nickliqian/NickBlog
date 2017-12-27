@@ -17,13 +17,14 @@ from django.conf.urls import include, url, patterns
 from django.contrib import admin
 from django.conf import settings
 from article.search_views import MySearchView
+from article.views import IndexView
 
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
 
     # article
-    url(r'^', include("article.urls", namespace="indexEmpty")),
+    url(r'^$', IndexView.as_view(), name='index'),
     # url(r'^index/', include("article.urls", namespace="index")),
     url(r'^article/', include("article.urls", namespace="article")),
     # search

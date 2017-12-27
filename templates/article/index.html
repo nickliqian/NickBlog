@@ -20,7 +20,7 @@
                                 <header>
                                     <img src="/static/media/{{ obj.cover_img }}" alt="">
                                     <h3><a href="{% url 'article:article-detail' obj.id %}" class="hover_href">{{ obj.title }}</a></h3>
-                                    <span class="meta">{{ obj.created }}</span>
+                                    <span class="meta">{{ obj.created|date:"Y/m/j H:i" }}</span>
                                     <hr>
                                 </header>
                                 <div class="body">
