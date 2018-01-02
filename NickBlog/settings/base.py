@@ -262,6 +262,9 @@ SUIT_CONFIG = {
         'sites',
         {'app': 'article', 'icon': 'icon-star', 'label': '文章'},
         {'app': 'account', 'icon': 'icon-lock', 'label': '用户'},
+        {'app': 'hitcount', 'icon': 'icon-eye-open', 'label': 'QA统计'},
+        {'app': 'qa', 'icon': 'icon-question-sign', 'label': 'QA'},
+        {'app': 'taggit', 'icon': 'icon-tags', 'label': 'QA taggit'},
         {'app': 'auth', 'icon': 'icon-cog', 'label': '用户组', 'models': ('auth.group', )},
 
     ),

@@ -49,14 +49,14 @@
     <div style="float: left; margin: 5px;">
         {% if user.is_authenticated %}
           <p>你已登录，欢迎你：<a href="#">{{ user.username }}</a></p>
-          <button class="btn btn-default"><a href="{% url 'logout' %}?next={{ request.path }}">注销登录</a></button>
-          <button class="btn btn-default"><a href="{% url 'password_change' %}?next={{ request.path }}">修改密码</a></button>
+          <a href="{% url 'logout' %}?next={{ request.path }}"><button class="btn btn-default">注销登录</button></a>
+          <a href="{% url 'password_change' %}?next={{ request.path }}"><button class="btn btn-default">修改密码</button></a>
         {% else %}
           <p>你还没有登录，请
-            <button class="btn btn-default"><a href="{% url 'login' %}?next={{ request.path }}">登录</a></button>
+            <a href="{% url 'login' %}?next={{ request.path }}"><button class="btn btn-default">登录</button></a>
               <input type="hidden" name="next" value="{{ next }}"/>
             或者
-            <button class="btn btn-default"><a href="{% url 'account:register' %}">注册</a></button>
+            <a href="{% url 'account:register' %}"><button class="btn btn-default">注册</button></a>
           </p>
         {% endif %}
     </div>
@@ -96,8 +96,12 @@
                             <li><a href="#">API</a></li>
                             <li><a href="/qa">QA版块</a></li>
                             <li><a href="#aboutMe">关于本站</a></li>
-                            <li><a href="#aboutMe">联系站长</a></li>
-                            <li><a href="/silk" target="_blank">Silk</a></li>
+
+                            {% if user.is_authenticated %}
+                                {% if user.is_staff %}
+                                    <li><a href="/silk" target="_blank">Silk</a></li>
+                                {% endif %}
+                            {% endif %}
 
                         </ul>
                     </div>
@@ -170,12 +174,9 @@
                     <div class="col-md-4 footer-widget">
                         <h3> <i class="fa fa-pencil"></i> 项目交流</h3>
                         <ul class="clean-list">
-                            <li><a href="">Clean - Responsive HTML5 Template</a></li>
-                            <li><a href="">Responsive Pricing Table</a></li>
-                            <li><a href="">Yellow HTML5 Template</a></li>
-                            <li><a href="">Blackor Responsive Theme</a></li>
-                            <li><a href="">Portfolio Bootstrap Template</a></li>
-                            <li><a href="">Clean Slider Template</a></li>
+                            <li><a href="https://github.com/nickliqian/NickBlog">本站博客源码</a></li>
+                            <li><a href="https://github.com/nickliqian/Ralph_ChineseDocs">优秀开源CMDB系统中文文档</a></li>
+                            <li><a href="https://github.com/nickliqian/lagou_job">拉勾网爬虫</a></li>
                         </ul>
                     </div>
 
@@ -184,6 +185,7 @@
 
                         <p>如需联系站长，可发邮件至以下邮箱</p>
                         <p>nickliqian@outlook.com</p>
+                        <p><a href="https://github.com/nickliqian" style="color: cornflowerblue;">GitHub: nickliqian</a></p>
                          <div class="footer-widget-icon">
                             <i class="fa fa-facebook"></i><i class="fa fa-twitter"></i><i class="fa fa-google"></i>
                         </div>
