@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block headtitle %}
+    <title>所有文章</title>
+{% endblock headtitle %}
+
+{% block morehead %}
+{% endblock morehead %}
+
+{% block content %}
+
+                <div class="col-md-8 blog-main">
+
+                    {{ account_obj.nickname }}
+                    {{ account_obj.email }}
+
+                </div>
+
+                {% block aside %}
+                {% endblock aside %}
+
+{% endblock content %}
