@@ -1,3 +1,10 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def api_index(request):
+
+    context = {
+
+    }
+
+    return render(request, "apiModel/status.html", context=context)
