@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from mylib.myforms import RegisterForm
+from account.models import Account
 
 
 def register(request):
@@ -33,3 +34,15 @@ def register(request):
     # 如果用户通过表单提交注册信息，但是数据验证不合法，则渲染的是一个带有错误信息的表单
     # 将记录用户注册前页面的 redirect_to 传给模板，以维持 next 参数在整个注册流程中的传递
     return render(request, 'account/register.html', context={'form': form, 'next': redirect_to})
+
+
+def profile(request):
+
+    user = request.user
+    account_obj = Account.objects.get(id=user.id)
+
+    context = {
+        'account_obj': account_obj,
+    }
+
+    return render(request, 'account/profile.html', context)

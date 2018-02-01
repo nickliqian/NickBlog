@@ -27,6 +27,8 @@ urlpatterns = [
     url(r'^$', IndexView.as_view(), name='index'),
     # url(r'^index/', include("article.urls", namespace="index")),
     url(r'^article/', include("article.urls", namespace="article")),
+    # apiModel
+    url(r'^api_model/', include("apiModel.urls", namespace="api_model")),
     # search
     url(r'^search/', MySearchView(), name='haystack_search'),
     url('^account/', include('django.contrib.auth.urls')),

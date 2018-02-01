@@ -158,7 +158,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'NickBlog',
         'USER': os.environ.get('DATABASE_USER', 'root'),
-        'PASSWORD': os.environ.get('DATABASE_PASSWORD', 'password') or None,
+        'PASSWORD': os.environ.get('DATABASE_PASSWORD', 'mysql') or None,
         'HOST': os.environ.get('DATABASE_HOST', '127.0.0.1'),
         'PORT': os.environ.get('DATABASE_PORT', 3306),
         # 指定数据库配置
