@@ -7,3 +7,6 @@ TODO：完成全文搜索功能
 TODO：使用SUIT美化ADMIN
 TODO: 最近浏览
 TODO： 注册/认证系统 github/微信
+
+***
+*创建数据库的时候需要指定charset utf8
