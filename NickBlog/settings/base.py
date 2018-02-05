@@ -201,6 +201,8 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/static/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
 
+UPLOAD_ROOT = "/var/www/NickBlog/static/media/uploads/coverImg/"
+
 STATICFILES_FINDERS = ("django.contrib.staticfiles.finders.FileSystemFinder",
                        "django.contrib.staticfiles.finders.AppDirectoriesFinder",)
 

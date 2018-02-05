@@ -2,6 +2,7 @@ from django.db import models
 from DjangoUeditor.models import UEditorField
 from mylib.mixin import TimeStampMixin, LastSeenMixin
 from account.models import Account
+from NickBlog.settings.base import UPLOAD_ROOT
 
 
 # 文章模型
@@ -26,7 +27,7 @@ class Article(TimeStampMixin, LastSeenMixin, models.Model):
     # 是否删除
     isDelete = models.BooleanField(default=False)
     # 封面图片 height_field=None, width_field=None
-    cover_img = models.ImageField(upload_to='uploads/coverImg', blank=True)
+    cover_img = models.ImageField(upload_to=UPLOAD_ROOT, blank=True)
 
     def __str__(self):
         return "{}-{}".format(self.title, self.article_type)
