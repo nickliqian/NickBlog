@@ -188,20 +188,22 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
+# DEBUG->True   -> 使用项目目录下的文件
+# DEBUG->False  -> 使用STATIC_ROOT目录下的文件
 STATIC_URL = '/static/'
 STATIC_ROOT = '/var/www/NickBlog/static/'
 
 # 公共的static文件
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
-    os.path.join(BASE_DIR, "static/media"),
+    os.path.join(BASE_DIR, "media"),
 )
 
 # upload floder
-MEDIA_URL = '/static/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
-
-UPLOAD_ROOT = "/var/www/NickBlog/static/media/uploads/coverImg/"
+# 模板中使用 img.img.url 代表资源路径
+MEDIA_URL = '/media/'  # 可访问url
+# 无论是否debug，都会访问此路径下的资源（包括上传和访问）。如果是home路径需要先给出权限
+MEDIA_ROOT = '/var/www/NickBlog/media/'
 
 STATICFILES_FINDERS = ("django.contrib.staticfiles.finders.FileSystemFinder",
                        "django.contrib.staticfiles.finders.AppDirectoriesFinder",)

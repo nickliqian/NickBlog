@@ -2,7 +2,6 @@ from django.db import models
 from DjangoUeditor.models import UEditorField
 from mylib.mixin import TimeStampMixin, LastSeenMixin
 from account.models import Account
-from NickBlog.settings.base import UPLOAD_ROOT
 
 
 # 文章模型
