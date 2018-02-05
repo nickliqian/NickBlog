@@ -34,7 +34,11 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="lead-image">
-                                        <img src="{{ object.cover_img.url }}" alt="" class="img-responsive">
+
+                                        {% if obj.cover_img %}
+                                            <img src="{{ object.cover_img.url }}" alt="" class="img-responsive">
+                                        {% endif %}
+
                                     </div>
                                 </div>
 
