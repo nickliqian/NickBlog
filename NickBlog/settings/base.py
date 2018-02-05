@@ -194,10 +194,10 @@ STATIC_URL = '/static/'
 STATIC_ROOT = '/var/www/NickBlog/static/'
 
 # 公共的static文件
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-    os.path.join(BASE_DIR, "media"),
-)
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, "static"),
+#     os.path.join(BASE_DIR, "media"),
+# )
 
 # upload floder
 # 模板中使用 img.img.url 代表资源路径
