@@ -1,4 +1,4 @@
 killall -9 uwsgi;
-cd /root/NickBlog/NickBlog/;
-uwsgi --ini /root/NickBlog/NickBlog/uwsgi.ini;
+cd /home/nick/project/NickBlog/;
+uwsgi --ini /home/nick/project/NickBlog/NickBlog/uwsgi.ini;
 nginx -s reload;
