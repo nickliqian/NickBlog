@@ -33,7 +33,7 @@
         <div class="body clearfix">
             <ul class="tags">
                 {% for item in get_all_tags %}
-                    <li><a href="#">{{ item.tag_name }}</a></li>
+                    <li><a href="{% url 'article:article-tag' item.tag_name %}">{{ item.tag_name }}</a></li>
                 {% endfor %}
             </ul>
         </div>
