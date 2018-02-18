@@ -31,7 +31,7 @@
                                 <div>
                                     <i class="fa fa-tags"></i>
                                         {% for tag in object.article_tag.all %}
-                                            <a href=""><span class="tag_class">{{ tag.tag_name }}&nbsp;&nbsp;</span></a>
+                                            <a href="{% url 'article:article-tag' tag.tag_name %}"><span class="tag_class">{{ tag.tag_name }}&nbsp;&nbsp;</span></a>
                                         {% endfor %}
                                 </div>
                             </div>

@@ -96,3 +96,19 @@ class ArticleListView(ListView):
     def get_context_data(self, **kwargs):
         context = super(ArticleListView, self).get_context_data(**kwargs)
         return context
+
+
+class ArticleTagView(ListView):
+    model = Article
+    template_name = "article/list.html"
+
+    def get(self, request, *args, **kwargs):
+        context = super(ArticleTagView, self).get(request, *args, **kwargs)
+        tag = kwargs['tag']
+
+        tag_objs = TagType.objects.get(tag_name=tag)
+        new_object_list = tag_objs.tag2article.all()
+        context.update({"object_list": new_object_list})
+        return self.render_to_response(context)
+
+
