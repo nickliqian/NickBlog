@@ -148,3 +148,10 @@ a .tag_class:hover{
 .paging .more_red:hover{
     color: red;
 }
+
+.article_top_side {
+    height: 0px;
+    margin-left: 20px;
+    padding-top: 10px;
+    color: red;
+}

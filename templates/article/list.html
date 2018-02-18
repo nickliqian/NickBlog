@@ -9,6 +9,15 @@
 {% endblock morehead %}
 
 {% block content %}
+
+                <div class="article_top_side">
+                    {% if tag %}
+                        > 标签：{{ tag }}
+                    {% else %}
+                        > 所有文章
+                    {% endif %}
+                </div>
+
                 {% autopaginate object_list 5 as object_list_list %}
 
                 <div class="col-md-8 blog-main">

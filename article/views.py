@@ -110,6 +110,7 @@ class ArticleTagView(ListView):
         tag_objs = TagType.objects.get(tag_name=tag)
         new_object_list = tag_objs.tag2article.all()
         context.update({"object_list": new_object_list})
+        context.update({"tag": tag})
         return self.render_to_response(context)
 
 
