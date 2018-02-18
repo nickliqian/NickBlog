@@ -6,7 +6,7 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 
-from article.models import Article, Comment
+from article.models import Article, Comment, TagType
 from mylib.myforms import CommentForm
 
 
@@ -44,7 +44,14 @@ class ArticleDetailView(DetailView):
         comment_count = len(comment_list)
         return comment_list, comment_count
 
+    def tag(self):
+        tag_list = self.object.article_tag.all()
+        # tag_list = self.object.article_tag.filter(tag_name__contain='python')
+        tag_name_list = [i.tag_name for i in tag_list]
+        return tag_name_list
+
     def get_context_data(self, **kwargs):
+        self.tag()
         context = super(ArticleDetailView, self).get_context_data(**kwargs)
         obj = self.object
         # 记录被浏览次数

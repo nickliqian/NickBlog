@@ -28,6 +28,12 @@
                                     <span class="data">
                                         <a href="#comments">{{ object.get_comment_count }} Comments</a>
                                     </span>
+                                <div>
+                                    <i class="fa fa-tags"></i>
+                                        {% for tag in object.article_tag.all %}
+                                            <a href=""><span class="tag_class">{{ tag.tag_name }}&nbsp;&nbsp;</span></a>
+                                        {% endfor %}
+                                </div>
                             </div>
 
 

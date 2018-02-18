@@ -136,3 +136,15 @@ div form .searchBoder {
 .contrainerHeight {
     height: 97.6px;
 }
+
+a .tag_class{
+    color: #00a0e9;
+}
+
+a .tag_class:hover{
+    color: red;
+}
+
+.paging .more_red:hover{
+    color: red;
+}

@@ -22,11 +22,12 @@
                                     <img src="{{ obj.cover_img.url }}" alt="">
                                     {% endif %}
                                     <h3><a href="{% url 'article:article-detail' obj.id %}" class="hover_href">{{ obj.title }}</a></h3>
-                                    <span class="meta">{{ obj.created|date:"Y/m/j H:i" }}</span>
+                                    <span>作者：{{ obj.author }}</span>
+                                    <span class="meta"> &nbsp;&nbsp;{{ obj.created|date:"Y/m/j H:i" }}</span>
                                     <hr>
                                 </header>
                                 <div class="body">
-                                    {{ obj.short_note }}
+                                    <a href="{% url 'article:article-detail' obj.id %}" class="hover_href">{{ obj.short_note }}</a>
                                 </div>
                                 <div class="clearfix">
                                     <a href="{% url 'article:article-detail' obj.id %}" class="btn btn-clean-one">Read more</a>
@@ -38,7 +39,7 @@
                   {% endfor %}
 
                     <div class="paging">
-                        <a href="{% url 'article:article-list' %}" class="older"><i>More</i></a>
+                        <a href="{% url 'article:article-list' %}" class="older more_red"><i>More</i></a>
                     </div>
                 </div>
 
