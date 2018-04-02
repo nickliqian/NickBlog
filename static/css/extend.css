@@ -164,3 +164,6 @@ a .tag_class:hover{
     color: #00a0e9;
 }
 
+.navbar-default .navbar-nav>li>a {
+    color: #444;
+}
