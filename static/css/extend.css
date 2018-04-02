@@ -33,15 +33,6 @@ aside.comments .comment .comment_body {
     margin-top: 10px;
 }
 
-/*#logo*/
-/*{*/
-/*position:relative;*/
-/*animation:spiderRun 25s;*/
-/*-moz-animation:spiderRun 25s; !* Firefox *!*/
-/*-webkit-animation:spiderRun 25s; !* Safari and Chrome *!*/
-/*-o-animation:spiderRun 25s; !* Opera *!*/
-/*}*/
-
 @keyframes spiderRun
 {
 0%   {left:0px; top:0px;}
@@ -66,21 +57,6 @@ aside.comments .comment .comment_body {
 100%  {left:500px; top:0px;}
 }
 
-@media (max-width: 767px) {
-  /*donghua*/
-  #logo
-  {
-  position:relative;
-  /*animation:none;*/
-  /*-moz-animation:none; !* Firefox *!*/
-  /*-webkit-animation:none; !* Safari and Chrome *!*/
-  /*-o-animation:none; !* Opera *!*/
-  }
-
-  /*#logo {*/
-  /*display: none;*/
-  /*}*/
-}
 
 div form .searchBoder {
     background-color: #f2f2f2;
