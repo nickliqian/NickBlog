@@ -33,14 +33,14 @@ aside.comments .comment .comment_body {
     margin-top: 10px;
 }
 
-#logo
-{
-position:relative;
-animation:spiderRun 25s;
--moz-animation:spiderRun 25s; /* Firefox */
--webkit-animation:spiderRun 25s; /* Safari and Chrome */
--o-animation:spiderRun 25s; /* Opera */
-}
+/*#logo*/
+/*{*/
+/*position:relative;*/
+/*animation:spiderRun 25s;*/
+/*-moz-animation:spiderRun 25s; !* Firefox *!*/
+/*-webkit-animation:spiderRun 25s; !* Safari and Chrome *!*/
+/*-o-animation:spiderRun 25s; !* Opera *!*/
+/*}*/
 
 @keyframes spiderRun
 {
@@ -155,3 +155,12 @@ a .tag_class:hover{
     padding-top: 10px;
     color: red;
 }
+
+#user_name_style{
+    color: red;
+}
+
+#user_name_style:hover{
+    color: #00a0e9;
+}
+
