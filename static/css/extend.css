@@ -118,3 +118,11 @@ a .tag_class:hover{
 .navbar-default .navbar-nav>li>a {
     color: #444;
 }
+
+.indexTitle {
+    padding-top: 20px;
+}
+
+#example-navbar-collapse .nav_pc_size li a {
+    font-size: 19px;
+}

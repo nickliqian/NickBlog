@@ -15,19 +15,21 @@
                   {% for objs in objss %}
                     <div class="row">
                         {% for obj in objs %}
-                        <div class="col-md-6 col-sm-6">
+                        <div class="col-md-12 col-sm-12">
                             <article class=" blog-teaser">
                                 <header>
-                                    {% if obj.cover_img %}
-                                    <img src="{{ obj.cover_img.url }}" alt="">
-                                    {% endif %}
-                                    <h3><a href="{% url 'article:article-detail' obj.id %}" class="hover_href">{{ obj.title }}</a></h3>
+                                    <!--{% if obj.cover_img %}-->
+                                    <!--<img src="{{ obj.cover_img.url }}" alt="">-->
+                                    <!--{% endif %}-->
+                                    <h3 class="indexTitle"><a href="{% url 'article:article-detail' obj.id %}" class="hover_href">{{ obj.title }}</a></h3>
                                     <span>作者：{{ obj.author }}</span>
                                     <span class="meta"> &nbsp;&nbsp;{{ obj.created|date:"Y/m/j H:i" }}</span>
                                     <hr>
                                 </header>
                                 <div class="body">
-                                    <a href="{% url 'article:article-detail' obj.id %}" class="hover_href">{{ obj.short_note }}</a>
+                                    <a href="{% url 'article:article-detail' obj.id %}" class="hover_href">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ obj.short_note }}
+                                    </a>
                                 </div>
                                 <div class="clearfix">
                                     <a href="{% url 'article:article-detail' obj.id %}" class="btn btn-clean-one">Read more</a>

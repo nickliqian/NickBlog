@@ -35,8 +35,6 @@ urlpatterns = [
     url(r'^search/', MySearchView(), name='haystack_search'),
     url('^account/', include('django.contrib.auth.urls')),
     url('^account/', include('account.urls', namespace='account')),
-    # QA system
-    url(r'^qa/', include('qa.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

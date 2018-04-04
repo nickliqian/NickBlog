@@ -1,3 +1,4 @@
+python manage.py collectstatic;
 killall -9 uwsgi;
 cd /home/nick/project/NickBlog/;
 uwsgi --ini /home/nick/project/NickBlog/NickBlog/uwsgi.ini;

@@ -46,27 +46,29 @@
 
 <body>
 
-    {#   登陆提示     #}
-    <div style="margin: 5px 5px 2px 5px; width: 1470px;">
-        {% if user.is_authenticated %}
-          <p style="float: right;">
-            你已登录：<a href="{% url 'account:profile' %}" id="user_name_style">{{ user.username }}</a>
-            <a href="{% url 'logout' %}?next={{ request.path }}"><button class="btn btn-default">注销登录</button></a>
-            <a href="{% url 'password_change' %}?next={{ request.path }}"><button class="btn btn-default">修改密码</button></a>
-          </p>
-        {% else %}
-          <p style="float: right;">
-            <a href="{% url 'login' %}?next={{ request.path }}"><button class="btn btn-default">登录</button></a>
-            <input type="hidden" name="next" value="{{ next }}"/>
-            <a href="{% url 'account:register' %}"><button class="btn btn-default">注册</button></a>
-          </p>
-        {% endif %}
-    </div>
 
     <header>
+         <div style="margin: 5px 5px 2px 5px; width: 1470px; height: 40px;">
+            {% if user.is_authenticated %}
+              <p style="float: right;">
+                你已登录：<a href="{% url 'account:profile' %}" id="user_name_style">{{ user.username }}</a>
+                <a href="{% url 'logout' %}?next={{ request.path }}"><button class="btn btn-default">注销登录</button></a>
+                <a href="{% url 'password_change' %}?next={{ request.path }}"><button class="btn btn-default">修改密码</button></a>
+              </p>
+            {% else %}
+              <p style="float: right;">
+                <a href="{% url 'login' %}?next={{ request.path }}"><button class="btn btn-default">登录</button></a>
+                <input type="hidden" name="next" value="{{ next }}"/>
+                <a href="{% url 'account:register' %}"><button class="btn btn-default">注册</button></a>
+              </p>
+            {% endif %}
+        </div>
+
         <div class="widewrapper masthead jumppad">
             <div class="container contrainerHeight">
                 <a href="/" id="logo">
+                    <h1 style="display: none;">码练</h1>
+                    <h1 style="display: none;">traincode.com</h1>
                     <img src="{% static 'img/logo2.png' %}" alt="clean Blog">
                 </a>
 
@@ -91,12 +93,11 @@
                         <a class="navbar-brand" href="#"></a>
                     </div>
                     <div class="collapse navbar-collapse" id="example-navbar-collapse">
-                        <ul class="nav nav-pills navbar-nav">
+                        <ul class="nav nav-pills navbar-nav nav_pc_size">
 
                             <li><a href="/">主页</a></li>
                             <li><a href="/article/all">文章</a></li>
                             <li><a href="/api_model">API</a></li>
-                            <li><a href="/qa">QA版块</a></li>
                             <li><a href="#aboutMe">关于本站</a></li>
 
                             {% if user.is_authenticated %}
