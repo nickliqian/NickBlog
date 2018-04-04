@@ -43,7 +43,7 @@ INSTALLED_APPS = (
     'haystack',
     'article',
     # DjangoUeditor 富文本编辑器插件
-    'DjangoUeditor',
+    # 'DjangoUeditor',
     # dj-pagination 自动分页插件
     'dj_pagination',
     # django-silk http请求和sql查询分析插件

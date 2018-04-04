@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 from article.models import Article, Comment, TagType
 from mylib.myforms import CommentForm
+import markdown
 
 
 class IndexView(TemplateView):
@@ -60,6 +61,12 @@ class ArticleDetailView(DetailView):
         context['article_comment'], context['comment_count'] = self.comment()
         comment_form = CommentForm()
         context['form'] = comment_form
+        obj.content = markdown.markdown(obj.content,
+                                  extensions=[
+                                     'markdown.extensions.extra',
+                                     'markdown.extensions.codehilite',
+                                     'markdown.extensions.toc',
+                                  ])
         return context
 
 

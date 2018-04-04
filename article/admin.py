@@ -3,7 +3,7 @@ from article.models import Article, ArticleType, Comment, TagType
 
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'article_type', 'created')
+    list_display = ('title', 'article_type', 'created', 'view_count')
     filter_horizontal = ('article_tag',)
     list_filter = ('created', )
     ordering = ('-created',)
@@ -21,6 +21,9 @@ class TagTypeAdmin(admin.ModelAdmin):
 
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('article', 'userOfComment', 'created', 'show_content')
+    list_filter = ('created', )
+    ordering = ('-created',)
+    date_hierarchy = 'created'
 
     # 非转义模式显示评论
     def show_content(self, obj):

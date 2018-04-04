@@ -17,8 +17,9 @@ class Article(TimeStampMixin, LastSeenMixin, models.Model):
     # 浏览量
     view_count = models.IntegerField(default=0)
     # 文章正文
-    content = UEditorField(height=300, width=1000, blank=False, imagePath="uploads/blog/images/",
-                           toolbars='besttome', filePath='uploads/blog/files/')
+    # content = UEditorField(height=300, width=1000, blank=False, imagePath="uploads/blog/images/",
+    #                        toolbars='besttome', filePath='uploads/blog/files/')
+    content = models.TextField()
     # 说明
     remark = models.CharField(max_length=1000, default='no remark', blank=True)
     # 摘要
@@ -26,7 +27,7 @@ class Article(TimeStampMixin, LastSeenMixin, models.Model):
     # 是否删除
     isDelete = models.BooleanField(default=False)
     # 封面图片 height_field=None, width_field=None
-    cover_img = models.ImageField(upload_to='uploads/coverImg', blank=True)
+    # cover_img = models.ImageField(upload_to='uploads/coverImg', blank=True)
 
     def __str__(self):
         return "{}-{}".format(self.title, self.article_type)
@@ -80,8 +81,7 @@ class Comment(TimeStampMixin, models.Model):
     # 对应的文章
     article = models.ForeignKey('Article', blank=False, related_name='article2comment')
     # 留言内容
-    content = UEditorField(height=300, width=1000, blank=False, imagePath="uploads/blog/images/",
-                           toolbars='besttome', filePath='uploads/blog/files/')
+    content = models.TextField()
     # 用户id
     userOfComment = models.ForeignKey(Account, related_name="comment2account", null=True)
     # 逻辑删除
