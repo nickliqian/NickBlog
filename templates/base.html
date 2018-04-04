@@ -47,68 +47,64 @@
 
 <body>
 
-
     <header>
-         <div style="margin: 5px 5px 2px 5px; width: 1470px; height: 40px;">
+         <div class="container" style="margin-top: 5px">
             {% if user.is_authenticated %}
-              <p style="float: right;">
-                你已登录：<a href="{% url 'account:profile' %}" id="user_name_style">{{ user.username }}</a>
-                <a href="{% url 'logout' %}?next={{ request.path }}"><button class="btn btn-default">注销登录</button></a>
-                <a href="{% url 'password_change' %}?next={{ request.path }}"><button class="btn btn-default">修改密码</button></a>
+              <p class="login_or_out">
+                你已登录：<a href="{% url 'account:profile' %}" id="user_name_style">{{ user.username }}</a>&nbsp;
+                <a href="{% url 'logout' %}?next={{ request.path }}"><button class="btn btn-default login_btn">注销登录</button></a>
+                <a href="{% url 'password_change' %}?next={{ request.path }}"><button class="btn btn-default login_btn">修改密码</button></a>
               </p>
             {% else %}
-              <p style="float: right;">
-                <a href="{% url 'login' %}?next={{ request.path }}"><button class="btn btn-default">登录</button></a>
+              <p class="login_or_out">
+                <a href="{% url 'login' %}?next={{ request.path }}"><button class="btn btn-default login_btn">登录</button></a>
                 <input type="hidden" name="next" value="{{ next }}"/>
-                <a href="{% url 'account:register' %}"><button class="btn btn-default">注册</button></a>
+                <a href="{% url 'account:register' %}"><button class="btn btn-default login_btn">注册</button></a>
               </p>
             {% endif %}
         </div>
 
         <div class="widewrapper masthead jumppad">
-            <div class="container contrainerHeight">
-                <a href="/" id="logo">
-                    <h1 style="display: none;">码练</h1>
-                    <h1 style="display: none;">traincode.com</h1>
-                    <img src="{% static 'img/logo2.png' %}" alt="clean Blog">
-                </a>
-
-                <div id="mobile-nav-toggle" class="pull-right">
-                    <a href="#" data-toggle="collapse" data-target=".clean-nav .navbar-collapse">
-                        <i class="fa fa-bars"></i>
+            <div class="container">
+                <div class="core_logo">
+                    <a href="/" id="logo">
+                        <h1 style="display: none;">码练</h1>
+                        <h1 style="display: none;">traincode.com</h1>
+                        <img class="logo_img" src="{% static 'img/logo2.png' %}" alt="码练">
                     </a>
                 </div>
-
-                <nav class="pull-right clean-nav navbar navbar-default" role="navigation">
+                <nav class="pull-right clean-nav navbar-default" role="navigation">
                     <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse"
-                                data-target="#example-navbar-collapse">
-                            <span class="sr-only">切换导航</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
 
-                        {#title#}
-                        <a class="navbar-brand" href="#"></a>
-                    </div>
-                    <div class="collapse navbar-collapse" id="example-navbar-collapse">
-                        <ul class="nav nav-pills navbar-nav nav_pc_size">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                    data-target="#example-navbar-collapse">
+                                <span class="sr-only">切换导航</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
 
-                            <li><a href="/">主页</a></li>
-                            <li><a href="/article/all">文章</a></li>
-                            <li><a href="/api_model">API</a></li>
-                            <li><a href="#aboutMe">关于本站</a></li>
+                            {#title#}
+                            <a class="navbar-brand" href="#"></a>
+                        </div>
 
-                            {% if user.is_authenticated %}
-                                {% if user.is_staff %}
-                                    <li><a href="/silk" target="_blank">Silk</a></li>
+                        <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                            <ul class="nav nav-pills navbar-nav nav_pc_size">
+
+                                <li><a href="/">主页</a></li>
+                                <li><a href="/article/all">文章</a></li>
+                                <li><a href="/api_model">API</a></li>
+                                <li><a href="#aboutMe">关于本站</a></li>
+
+                                {% if user.is_authenticated %}
+                                    {% if user.is_staff %}
+                                        <li><a href="/silk" target="_blank">Silk</a></li>
+                                    {% endif %}
                                 {% endif %}
-                            {% endif %}
 
-                        </ul>
-                    </div>
+                            </ul>
+                        </div>
                     </div>
                 </nav>
 

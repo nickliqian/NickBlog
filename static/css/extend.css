@@ -25,12 +25,12 @@ aside.comments .comment .comment_body {
 }
 
 .jumppad {
-    padding-top: 10px;
-    padding-bottom: 30px;
+    padding-top: 0px;
+    padding-bottom: 15px;
 }
 
 #logo {
-    margin-top: 10px;
+    margin-top: 0px;
 }
 
 div form .searchBoder {
@@ -125,4 +125,48 @@ a .tag_class:hover{
 
 #example-navbar-collapse .nav_pc_size li a {
     font-size: 19px;
+}
+
+@media(max-width: 767px) {
+    /*.core_logo {*/
+        /*display: none;*/
+    /*}*/
+
+    .jumppad {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        height: 55px;
+    }
+
+    .logo_img {
+        width: 110px;
+    }
+
+    .clean-nav .nav-pills > li {
+        margin-left: -28px;
+    }
+
+    .container {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+}
+
+.login_or_out {
+    float: right;
+    margin-bottom: 0px;
+    font-size: 12px;
+}
+
+.login_btn {
+    padding: 3px 10px;
+    font-size: 12px;
+}
+
+.navbar-toggle {
+    margin-right: 0px;
+}
+
+.navbar-collapse {
+    padding-right: 0px;
 }
