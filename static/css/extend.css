@@ -170,3 +170,39 @@ a .tag_class:hover{
 .navbar-collapse {
     padding-right: 0px;
 }
+
+.blog-teaser {
+  margin-bottom: 25px;
+}
+
+hr {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.blog-teaser .btn {
+  float: right;
+  margin-right: 25px;
+  margin-bottom: 8px;
+}
+
+.blog-post .body .meta {
+    margin-bottom: 10px;
+}
+
+.user_profile {
+    list-style:none;
+}
+
+.widewrapper.subheader {
+  min-height: 30px;
+}
+
+.clean-breadcrumb {
+  margin-top: 8px;
+}
+
+.clean-searchbox {
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
