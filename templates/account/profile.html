@@ -10,16 +10,157 @@
 
 {% block content %}
 
-    <div class="col-md-8 blog-main">
+    <div class="col-md-12 blog-main">
 
-        <ul class="user_profile">
-            <li>昵称：<span>{{ account_obj.nickname }}</span></li>
-            <li>出生年月：<span></span></li>
-            <li>邮箱：<span>{{ account_obj.email }}</span></li>
-        </ul>
+        <div class="info-main">
+            <form class="am-form am-form-horizontal">
+            {% csrf_token %}
 
+                <div class="am-form-group">
+                    <label for="user-name2" class="am-form-label">昵称</label>
+                    <div class="am-form-content">
+                        <input type="text" class="form-control" id="user-name2" placeholder="nickname" value="{{ account_obj.nickname }}">
+                    </div>
+                </div>
 
+                <div class="am-form-group">
+                    <label for="user-username" class="am-form-label">用户名</label>
+                    <div class="am-form-content">
+                        <input type="text" class="form-control" id="user-username" placeholder="username" value="{{ account_obj.username }}">
+                    </div>
+                </div>
+
+                <div class="am-form-group">
+                    <label class="am-form-label">性别</label>
+                    <div class="am-form-content sex">
+                        {% if account_obj.gender == True %}
+                        <label class="am-radio-inline">
+                            <input type="radio" name="radio10" value="male" data-am-ucheck=""
+                                   class="am-ucheck-radio" checked="checked"><span class="am-ucheck-icons"><i
+                                class="am-icon-unchecked"></i><i class="am-icon-checked"></i></span> 男
+                        </label>
+                        {% else %}
+                        <label class="am-radio-inline">
+                            <input type="radio" name="radio10" value="male" data-am-ucheck=""
+                                   class="am-ucheck-radio"><span class="am-ucheck-icons"><i
+                                class="am-icon-unchecked"></i><i class="am-icon-checked"></i></span> 男
+                        </label>
+                        {% endif %}
+
+                        {% if account_obj.gender == False %}
+                        <label class="am-radio-inline">
+                            <input type="radio" name="radio10" value="female" data-am-ucheck="" class="am-ucheck-radio" checked="checked"><span
+                                class="am-ucheck-icons"><i class="am-icon-unchecked"></i><i class="am-icon-checked"></i></span>
+                            女
+                        </label>
+                        {% else %}
+                            <label class="am-radio-inline">
+                                <input type="radio" name="radio10" value="female" data-am-ucheck="" class="am-ucheck-radio"><span
+                                    class="am-ucheck-icons"><i class="am-icon-unchecked"></i><i class="am-icon-checked"></i></span>
+                                女
+                            </label>
+                        {% endif %}
+
+                        {% if account_obj.gender == False %}
+                            <label class="am-radio-inline">
+                                <input type="radio" name="radio10" value="secret" data-am-ucheck="" class="am-ucheck-radio" checked="checked"><span
+                                    class="am-ucheck-icons"><i class="am-icon-unchecked"></i><i class="am-icon-checked"></i></span>
+                                保密
+                            </label>
+                        {% else %}
+                            <label class="am-radio-inline">
+                                <input type="radio" name="radio10" value="secret" data-am-ucheck="" class="am-ucheck-radio"><span
+                                    class="am-ucheck-icons"><i class="am-icon-unchecked"></i><i class="am-icon-checked"></i></span>
+                                保密
+                            </label>
+                        {% endif %}
+
+                    </div>
+                </div>
+
+                <div class="am-form-group">
+                    <label for="user-phone" class="am-form-label">电话</label>
+                    <div class="am-form-content">
+                        <input id="user-phone" class="form-control" placeholder="telephone number" type="tel" value="{{ account_obj.phone_number }}">
+                    </div>
+                </div>
+
+                <div class="am-form-group">
+                    <label for="user-email" class="am-form-label">电子邮件</label>
+                    <div class="am-form-content">
+                        <input id="user-email" class="form-control" placeholder="Email" type="email" value="{{ account_obj.email }}">
+                    </div>
+                </div>
+
+                <div class="am-form-group">
+                    <label for="user-birth" class="am-form-label">生日</label>
+                    <div class="am-form-content">
+                        <input type="text" class="form-control" id="user-birth" placeholder="生日" value="{{ account_obj.birth }}">
+                    </div>
+                </div>
+
+                <div class="am-form-group">
+                    <label for="user-date_joined" class="am-form-label">注册日期</label>
+                    <div class="am-form-content">
+{#                        <input type="text" id="user-date_joined" placeholder="注册日期" value="{{ account_obj.date_joined }}">#}
+                        <span>{{ account_obj.date_joined }}</span>
+                    </div>
+                </div>
+
+                <div class="am-form-group">
+                    <label for="user-user_site" class="am-form-label">网站</label>
+                    <div class="am-form-content">
+                        <input type="text" class="form-control" id="user-user_site" placeholder="个人网站" value="{{ account_obj.user_site }}">
+                    </div>
+                </div>
+
+                <div class="am-form-group">
+                    <label for="user-company" class="am-form-label">公司</label>
+                    <div class="am-form-content">
+                        <input type="text" class="form-control" id="user-company" placeholder="公司名称" value="{{ account_obj.company }}">
+                    </div>
+                </div>
+
+                <div class="am-form-group">
+                    <label for="user-user_job" class="am-form-label">工作</label>
+                    <div class="am-form-content">
+                        <input type="text" class="form-control" id="user-user_job" placeholder="从事工作、行业" value="{{ account_obj.user_job }}">
+                    </div>
+                </div>
+
+                <div class="am-form-group">
+                    <label for="user-city" class="am-form-label">城市</label>
+                    <div class="am-form-content">
+                        <input type="text" class="form-control" id="user-city" placeholder="居住城市" value="{{ account_obj.city }}">
+                    </div>
+                </div>
+
+                <div class="am-form-group">
+                    <label for="user-signature" class="am-form-label">签名</label>
+                    <div class="am-form-content">
+                        <input type="text" class="form-control" id="user-signature" placeholder="写一句话吧" value="{{ account_obj.signature }}">
+                    </div>
+                </div>
+
+{#                <div class="am-form-group safety">#}
+{#                    <label for="user-safety" class="am-form-label">账号安全</label>#}
+{#                    <div class="am-form-content safety">#}
+{#                        <a href="safety.html">#}
+{#                            <span class="am-icon-angle-right"></span>#}
+{#                        </a>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="info-btn">#}
+{#                    <div class="am-btn am-btn-danger">保存修改</div>#}
+{#                </div>#}
+
+            </form>
+        </div>
 
     </div>
 
 {% endblock content %}
+
+{% block aside %}
+
+{% endblock aside %}

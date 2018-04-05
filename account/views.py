@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from mylib.myforms import RegisterForm
 from account.models import Account
+from django.http import HttpResponseRedirect
 
 
 def register(request):
@@ -37,12 +38,12 @@ def register(request):
 
 
 def profile(request):
-
     user = request.user
-    account_obj = Account.objects.get(id=user.id)
-
-    context = {
-        'account_obj': account_obj,
-    }
-
-    return render(request, 'account/profile.html', context)
+    if user.is_authenticated():
+        account_obj = Account.objects.get(id=user.id)
+        context = {
+            'account_obj': account_obj,
+        }
+        return render(request, 'account/profile.html', context)
+    else:
+        return HttpResponseRedirect('/')

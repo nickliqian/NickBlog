@@ -190,10 +190,6 @@ hr {
     margin-bottom: 10px;
 }
 
-.user_profile {
-    list-style:none;
-}
-
 .widewrapper.subheader {
   min-height: 30px;
 }
@@ -205,4 +201,29 @@ hr {
 .clean-searchbox {
   margin-bottom: 8px;
   margin-top: 8px;
+}
+
+.am-form-group {
+    margin-left: 30px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.am-form-group div {
+    margin-right: 30px;
+    display: inline;
+}
+
+.am-form-content {
+    position: absolute;
+    left: 100px;
+}
+
+.am-form-content input {
+    width: 500px;
+}
+
+.am-radio-inline input {
+    width: 30px;
 }
