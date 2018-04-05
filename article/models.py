@@ -1,5 +1,4 @@
 from django.db import models
-from DjangoUeditor.models import UEditorField
 from mylib.mixin import TimeStampMixin, LastSeenMixin
 from account.models import Account
 
