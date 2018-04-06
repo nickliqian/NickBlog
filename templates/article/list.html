@@ -27,7 +27,11 @@
                     <article class="blog-post">
 
                         <div class="body">
-                            <a href="{% url 'article:article-detail' object.id %}" class="hover_href"><h2><b>{{ object.title|escape }}</b></h2></a>
+                            <a href="{% url 'article:article-detail' object.id %}" class="hover_href">
+                                <h2 class="list_title">
+                                    <b>{{ object.title|escape }}</b>
+                                </h2>
+                            </a>
 
                             <div class="meta">
                                 <i class="fa fa-user"></i> {{ object.author }}
@@ -35,7 +39,7 @@
                                 <i class="fa fa-eye"></i> {{ object.view_count }}
                                 <i class="fa fa-comments"></i>
                                     <span class="data">
-                                        <a href="#comments">{{ object.get_comment_count }} Comments</a>
+                                        <a href="#comments">{{ object.get_comment_count }} 评论</a>
                                     </span>
                                 <div>
                                     <i class="fa fa-tags"></i>
@@ -67,7 +71,7 @@
                     <HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#987cb9 SIZE=3>
                     {% endfor %}
 
-                    <div>
+                    <div style="text-align: center">
 
                         {% paginate using 'pagination\article\pagination.html' %}
                     </div>

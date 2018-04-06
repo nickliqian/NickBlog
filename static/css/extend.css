@@ -103,6 +103,7 @@ a .tag_class:hover{
 .article_top_side {
     height: 0px;
     margin-left: 20px;
+    margin-bottom: 20px;
     padding-top: 10px;
     color: red;
 }
@@ -226,4 +227,77 @@ hr {
 
 .am-radio-inline input {
     width: 30px;
+}
+
+.detail_title {
+    font-family: 'PingFang SC','Microsoft YaHei',SimHei,Arial,SimSun;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    font-size: 26px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.detail_content {
+
+}
+
+.detail_content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.detail_content code {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    word-wrap: break-word;//自动换行
+    word-break: break-all;//英文单词断行
+}
+
+.detail_content p {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    word-wrap: break-word;//自动换行
+    word-break: break-all;//英文单词断行
+}
+
+.list_title {
+    font-weight: bold;
+    font-size: 26px;
+    text-align: center;
+    color: black;
+}
+
+.blog-main {
+  padding-top: 1px;
+  padding-bottom: 20px;
+}
+
+.meta {
+    text-align: center;
+}
+
+.index_main {
+    margin-top: 35px;
+}
+
+.clean-searchbox {
+   min-width: 0px;
+    margin-right: 8px;
+}
+
+.clean-breadcrumb {
+    margin-left: 8px;
+}
+
+footer .row {
+    padding-left: 8px;
+}
+
+.indexTitle {
+    font-weight: bold;
 }

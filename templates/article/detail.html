@@ -37,26 +37,26 @@
                             <!--</div>-->
                         </header>
                         <div class="body">
-                            <h1><b>{{ object.title }}</b></h1>
+                            <h1 class="detail_title"><b>{{ object.title }}</b></h1>
                             <div class="meta">
                                 <i class="fa fa-user"></i> {{ object.author }}
                                 <i class="fa fa-calendar"></i> {{ object.created|date:"Y/m/j H:i" }}
                                 <i class="fa fa-eye"></i> {{ object.view_count }}
                                 <i class="fa fa-comments"></i>
                                     <span class="data">
-                                        <a href="#comments">{{ comment_count }} Comments</a>
+                                        <a href="#comments">{{ comment_count }} 评论</a>
                                     </span>
 
-                                <div>
+
                                 <i class="fa fa-tags"></i>
                                     {% for tag in object.article_tag.all %}
                                         <a href="{% url 'article:article-tag' tag.tag_name %}"><span class="tag_class">{{ tag.tag_name }}&nbsp;&nbsp;</span></a>
                                     {% endfor %}
-                                </div>
+
                             </div>
 
 
-                            <div>
+                            <div class="detail_content">
                             {{ object.content|safe }}
                             </div>
                         </div>

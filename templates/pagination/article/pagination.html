@@ -4,9 +4,9 @@
   {% block previouslink %}
   {% if page_obj.has_previous %}
   {% if disable_link_for_first_page and page_obj.previous_page_number == 1 %}
-  <a href="{{ request.path }}{% if getvars %}?{{ getvars|slice:"1:" }}{% endif %}" class="prev">{{ previous_link_decorator|safe }}{% trans "上一页" %}</a>
+  <a href="{{ request.path }}{% if getvars %}?{{ getvars|slice:"1:" }}{% endif %}" class="prev btn btn-default">{{ previous_link_decorator|safe }}{% trans "上一页" %}</a>
   {% else %}
-  <a href="?page{{ page_suffix }}={{ page_obj.previous_page_number }}{{ getvars }}" class="prev">{{ previous_link_decorator|safe }}{% trans "上一页" %}</a>
+  <a href="?page{{ page_suffix }}={{ page_obj.previous_page_number }}{{ getvars }}" class="prev btn btn-default">{{ previous_link_decorator|safe }}{% trans "上一页" %}</a>
   {% endif %}
   {% else %}
   {% if display_disabled_previous_link %}
@@ -19,12 +19,12 @@
   {% for page in pages %}
   {% if page %}
   {% ifequal page page_obj.number %}
-  <span class="current page">{{ page }}</span>
+  <span class="current page btn btn-primary">{{ page }}</span>
   {% else %}
   {% if disable_link_for_first_page and page == 1 %}
-  <a href="{{ request.path }}{% if getvars %}?{{ getvars|slice:"1:" }}{% endif %}" class="page">{{ page }}</a>
+  <a href="{{ request.path }}{% if getvars %}?{{ getvars|slice:"1:" }}{% endif %}" class="page btn btn-default">{{ page }}</a>
   {% else %}
-  <a href="?page{{ page_suffix }}={{ page }}{{ getvars }}" class="page">{{ page }}</a>
+  <a href="?page{{ page_suffix }}={{ page }}{{ getvars }}" class="page btn btn-default">{{ page }}</a>
   {% endif %}
   {% endifequal %}
   {% else %}
@@ -35,7 +35,7 @@
   {% endblock pagelinks %}
   {% block nextlink %}
   {% if page_obj.has_next %}
-  <a href="?page{{ page_suffix }}={{ page_obj.next_page_number }}{{ getvars }}" class="next">{% trans "下一页" %}{{ next_link_decorator|safe }}</a>
+  <a href="?page{{ page_suffix }}={{ page_obj.next_page_number }}{{ getvars }}" class="next btn btn-default">{% trans "下一页" %}{{ next_link_decorator|safe }}</a>
   {% else %}
   {% if display_disabled_next_link %}
   <span class="disabled next">{% trans "下一页" %}{{ next_link_decorator|safe }}</span>
