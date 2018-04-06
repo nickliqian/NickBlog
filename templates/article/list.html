@@ -41,12 +41,12 @@
                                     <span class="data">
                                         <a href="#comments">{{ object.get_comment_count }} 评论</a>
                                     </span>
-                                <div>
+
                                     <i class="fa fa-tags"></i>
                                         {% for tag in object.article_tag.all %}
                                             <a href="{% url 'article:article-tag' tag.tag_name %}"><span class="tag_class">{{ tag.tag_name }}&nbsp;&nbsp;</span></a>
                                         {% endfor %}
-                                </div>
+
                             </div>
 
 
