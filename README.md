@@ -10,12 +10,15 @@ Click to visit my blog: [码练-博客](http://www.traincode.cn)
 3. 全文检索
 4. 用户系统
 5. 通过silk远程访问debug日志
+6. 开发模式使用django_debug_toolbar
 
 
 ## 2. Web Page
 
 ### 2.1 Index page
 ![Alt text](./demoPictures/index.png)
+
+= = = = =
 
 ![Alt text](./demoPictures/index2.png)
 
