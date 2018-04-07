@@ -30,11 +30,6 @@
                     <article class="blog-post">
                         <header>
 
-                            <!--<div class="lead-image">-->
-
-                                <!--<img src="{{ object.cover_img.url }}" alt="" class="img-responsive">-->
-
-                            <!--</div>-->
                         </header>
                         <div class="body">
                             <h1 class="detail_title"><b>{{ object.title }}</b></h1>
@@ -46,7 +41,8 @@
                                     <span class="data">
                                         <a href="#comments">{{ comment_count }} 评论</a>
                                     </span>
-
+                                <i class="fa fa-star"></i>
+                                    <a href="{% url 'article:article-type' object.article_type %}"><span class="tag_class">{{ object.article_type }} </a>
 
                                 <i class="fa fa-tags"></i>
                                     {% for tag in object.article_tag.all %}

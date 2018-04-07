@@ -23,7 +23,6 @@ def get_all_tags():
 
 def get_all_types():
     all_types = ArticleType.objects.all().order_by('-id')
-    print(all_types)
     return all_types
 
 

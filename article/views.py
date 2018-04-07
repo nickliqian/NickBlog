@@ -102,7 +102,6 @@ class ArticleListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(ArticleListView, self).get_context_data(**kwargs)
-        context.update({"nav_flag": 0})
         return context
 
 
@@ -122,7 +121,6 @@ class ArticleTagView(ListView):
         new_object_list = tag_objs.tag2article.all()
         context.update({"object_list": new_object_list})
         context.update({"tag": tag})
-        context.update({"nav_flag": 1})
         return self.render_to_response(context)
 
 
@@ -142,5 +140,4 @@ class ArticleTypeView(ListView):
         new_object_list = type_objs.type2article.all()
         context.update({"object_list": new_object_list})
         context.update({"type": type_name})
-        context.update({"nav_flag": 2})
         return self.render_to_response(context)

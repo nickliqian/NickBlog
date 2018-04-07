@@ -47,17 +47,20 @@
 
                             <div class="meta">
                                 <i class="fa fa-user"></i> {{ object.author }}
-                                <i class="fa fa-calendar"></i> {{ object.created|date:"Y/m/j H:i" }}
+                                <i class="fa fa-calendar"></i> {{ object.created|date:"Y/m/j" }}
                                 <i class="fa fa-eye"></i> {{ object.view_count }}
                                 <i class="fa fa-comments"></i>
                                     <span class="data">
                                         <a href="#comments">{{ object.get_comment_count }} 评论</a>
                                     </span>
+                                <i class="fa fa-star"></i>
+                                    <a href="{% url 'article:article-type' object.article_type %}"><span class="tag_class">{{ object.article_type }} </a>
 
-                                    <i class="fa fa-tags"></i>
-                                        {% for tag in object.article_tag.all %}
-                                            <a href="{% url 'article:article-tag' tag.tag_name %}"><span class="tag_class">{{ tag.tag_name }}&nbsp;&nbsp;</span></a>
-                                        {% endfor %}
+
+{#                                    <i class="fa fa-tags"></i>#}
+{#                                        {% for tag in object.article_tag.all %}#}
+{#                                            <a href="{% url 'article:article-tag' tag.tag_name %}"><span class="tag_class">{{ tag.tag_name }}&nbsp;&nbsp;</span></a>#}
+{#                                        {% endfor %}#}
                             </div>
 
                         </div>

@@ -17,7 +17,17 @@
                                 {% highlight_cover_head result.object.title with query max_length 200 start_head True %}
                             </a>
                         </h3>
-                        <p>作者：{% highlight result.object.author with query %}</p>
+                        <p>
+                            <span>
+                                <b>作者：</b>{% highlight result.object.author with query %}
+                            </span>
+                            <span>
+                                <b>分类：</b>{{ result.object.article_type }}
+                            </span>
+                            <span>
+                                <b>发表时间：</b>{{ result.object.created|date:"Y/m/j" }}
+                            </span>
+                        </p>
                         <p>{% highlight result.object.content with query %}</p>
                         <!--<a class="serachResultCheckAll" href="{{ result.object.get_absolute_url }}"><i>查看全部</i></a>-->
                     </p>
