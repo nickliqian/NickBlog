@@ -1,6 +1,5 @@
 from django.conf.urls import url
-from .views import IndexView, ArticleDetailView, ArticleListView, ArticleDetailRedirectView, ArticleTagView
-from haystack.views import SearchView
+from .views import IndexView, ArticleDetailView, ArticleListView, ArticleDetailRedirectView, ArticleTagView, ArticleTypeView
 
 
 urlpatterns = [
@@ -12,9 +11,9 @@ urlpatterns = [
     url(r'^all/$', ArticleListView.as_view(), name='article-list'),
     # 标签页
     url(r'^tag/(?P<tag>.*)/$', ArticleTagView.as_view(), name='article-tag'),
+    # 分类页
+    url(r'^type/(?P<type>.*)/$', ArticleTypeView.as_view(), name='article-type'),
     # 详细页评论跳转
     url(r'^redirect_detail/(?P<pk>[-\w]+)/$', ArticleDetailRedirectView.as_view(), name='redirect-detail'),
-    # 搜索
-    # url(r'^abc$', SearchView(), name='haystack_search'),
 ]
 

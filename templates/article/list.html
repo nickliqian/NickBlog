@@ -12,9 +12,11 @@
 
                 <div class="article_top_side">
                     {% if tag %}
-                        > 标签：{{ tag }}
+                        > <span>标签：{{ tag }}</span>
+                    {% elif type %}
+                        > <span>分类：{{ type }}</span>
                     {% else %}
-                        > 所有文章
+                        > <span>所有文章</span>
                     {% endif %}
                 </div>
 
@@ -33,6 +35,16 @@
                                 </h2>
                             </a>
 
+
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <div>
+                                    {{ object.short_note|safe }}
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="meta">
                                 <i class="fa fa-user"></i> {{ object.author }}
                                 <i class="fa fa-calendar"></i> {{ object.created|date:"Y/m/j H:i" }}
@@ -46,24 +58,6 @@
                                         {% for tag in object.article_tag.all %}
                                             <a href="{% url 'article:article-tag' tag.tag_name %}"><span class="tag_class">{{ tag.tag_name }}&nbsp;&nbsp;</span></a>
                                         {% endfor %}
-
-                            </div>
-
-
-                            <div class="row">
-{#                                <div class="col-md-4">#}
-{#                                    <div class="lead-image">#}
-{##}
-{#                                        <img src="{{ object.cover_img.url }}" alt="" class="img-responsive">#}
-{##}
-{#                                    </div>#}
-{#                                </div>#}
-
-                                <div class="col-md-12">
-                                    <div>
-                                    {{ object.short_note|safe }}
-                                    </div>
-                                </div>
                             </div>
 
                         </div>

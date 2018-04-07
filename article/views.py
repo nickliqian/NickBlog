@@ -6,7 +6,7 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 
-from article.models import Article, Comment, TagType
+from article.models import Article, Comment, TagType, ArticleType
 from mylib.myforms import CommentForm
 import markdown
 
@@ -102,6 +102,7 @@ class ArticleListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(ArticleListView, self).get_context_data(**kwargs)
+        context.update({"nav_flag": 0})
         return context
 
 
@@ -114,10 +115,32 @@ class ArticleTagView(ListView):
         context = self.get_context_data()
 
         tag = kwargs['tag']
-        tag_objs = TagType.objects.get(tag_name=tag)
+        try:
+            tag_objs = TagType.objects.get(tag_name=tag)
+        except Exception:
+            raise Http404
         new_object_list = tag_objs.tag2article.all()
         context.update({"object_list": new_object_list})
         context.update({"tag": tag})
+        context.update({"nav_flag": 1})
         return self.render_to_response(context)
 
 
+class ArticleTypeView(ListView):
+    model = Article
+    template_name = "article/list.html"
+
+    def get(self, request, *args, **kwargs):
+        super(ArticleTypeView, self).get(request, *args, **kwargs)
+        context = self.get_context_data()
+
+        type_name = kwargs['type']
+        try:
+            type_objs = ArticleType.objects.get(typename=type_name)
+        except Exception:
+            raise Http404
+        new_object_list = type_objs.type2article.all()
+        context.update({"object_list": new_object_list})
+        context.update({"type": type_name})
+        context.update({"nav_flag": 2})
+        return self.render_to_response(context)

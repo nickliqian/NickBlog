@@ -101,11 +101,16 @@ a .tag_class:hover{
 }
 
 .article_top_side {
-    height: 0px;
+    height: 1px;
     margin-left: 20px;
     margin-bottom: 20px;
     padding-top: 10px;
-    color: red;
+    color: #999;
+}
+
+.article_top_side span {
+    border: 1px solid #999;
+    padding: 2px 4px 2px 4px;
 }
 
 #user_name_style{
@@ -268,7 +273,7 @@ hr {
 .list_title {
     font-weight: bold;
     font-size: 26px;
-    text-align: center;
+    /*text-align: left;*/
     color: black;
 }
 
@@ -300,4 +305,25 @@ footer .row {
 
 .indexTitle {
     font-weight: bold;
+}
+
+.blog-post .meta {
+    text-align: left;
+    margin-left: -9px;
+    margin-top: 4px;
+}
+
+/*侧边栏微调*/
+.aside-widget header h3 {
+    font-size: 16px;
+    padding: 5px 20px 3px 20px;
+    margin-bottom: 5px;
+}
+
+.aside-widget {
+    margin-bottom: 20px;
+}
+
+.clean-list li {
+    margin-bottom: 4px;
 }

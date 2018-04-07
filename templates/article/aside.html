@@ -2,6 +2,36 @@
 
     <div class="aside-widget">
         <header>
+            <h3>热门主题</h3>
+        </header>
+        <div class="body clearfix">
+            <ul class="tags">
+                {% for item in get_all_tags %}
+                    <li><a href="{% url 'article:article-tag' item.tag_name %}">{{ item.tag_name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="aside-widget">
+        <header>
+            <h3>文章分类</h3>
+        </header>
+        <div class="body clearfix">
+            <ul class="tags">
+                {% for item in get_all_types %}
+                    <li>
+                        <a href="{% url 'article:article-type' item.typename %}">
+                            {{ item.typename }} <span>— {{ item.article_count }}篇</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="aside-widget">
+        <header>
             <h3>点击排行</h3>
         </header>
         <div class="body">
@@ -26,16 +56,5 @@
         </div>
     </div>
 
-    <div class="aside-widget">
-        <header>
-            <h3>热门主题</h3>
-        </header>
-        <div class="body clearfix">
-            <ul class="tags">
-                {% for item in get_all_tags %}
-                    <li><a href="{% url 'article:article-tag' item.tag_name %}">{{ item.tag_name }}</a></li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
+
 </aside>

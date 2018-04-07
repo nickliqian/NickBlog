@@ -53,6 +53,9 @@ class ArticleType(TimeStampMixin, models.Model):
     # 逻辑删除
     isDelete = models.BooleanField(default=False)
 
+    def article_count(self):
+        return self.type2article.count()
+
     def __str__(self):
         return self.typename
 
