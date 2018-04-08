@@ -1,6 +1,5 @@
-cd /home/nick/project/blogRUN;
 python /home/nick/project/NickBlog/manage.py collectstatic;
 killall -9 uwsgi;
-cd /home/nick/project/NickBlog/;
+cd /var/log/uwsgi/traincode/;
 uwsgi --ini /home/nick/project/NickBlog/NickBlog/uwsgi.ini;
 nginx -s reload;
