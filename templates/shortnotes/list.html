@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load staticfiles pagination_tags %}
+
+{% block headtitle %}
+<title>所有文章</title>
+{% endblock headtitle %}
+
+{% block morehead %}
+{% endblock morehead %}
+
+{% block content %}
+<div class="col-md-8 blog-main">
+    <article class="blog-post">
+
+        <div class="body">
+            {% for object in object_list %}
+                <h2>{{ object.title }}</h2>
+                <div>{{ object.content_type }} {{ object.module_type }}</div>
+                <p>{{ object.content }}</p>
+            {% endfor %}
+        </div>
+    </article>
+</div>
+
+{% endblock content %}
+
+
+{% block aside %}
+{% endblock aside %}

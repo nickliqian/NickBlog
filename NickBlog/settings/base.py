@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     # django-silk http请求和sql查询分析插件
     'silk',
     'account',
+    'shortNotes',
 )
 
 # 扩展AbstractUser模型，构建新的account应用需要的配置
@@ -236,7 +237,7 @@ SILKY_AUTHORISATION = True  # User must have permissions
 # Django Suit configuration example
 SUIT_CONFIG = {
     # header
-    'ADMIN_NAME': 'Nick CMS',
+    'ADMIN_NAME': '码练编辑系统',
     # 左上角时间显示设置 https://docs.djangoproject.com/en/dev/ref/templates/builtins/#std:templatefilter-date
     'HEADER_DATE_FORMAT': 'Y-m-j l',
     'HEADER_TIME_FORMAT': 'H:i',
@@ -261,6 +262,7 @@ SUIT_CONFIG = {
         'sites',
         {'app': 'article', 'icon': 'icon-star', 'label': '文章'},
         {'app': 'account', 'icon': 'icon-lock', 'label': '用户'},
+        {'app': 'shortnotes', 'icon': 'icon-leaf', 'label': '短笔记'},
         {'app': 'auth', 'icon': 'icon-cog', 'label': '用户组', 'models': ('auth.group', )},
 
     ),

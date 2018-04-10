@@ -49,7 +49,7 @@ class Article(TimeStampMixin, LastSeenMixin, models.Model):
 
 class ArticleType(TimeStampMixin, models.Model):
     # 类型名称
-    typename = models.CharField(max_length=50)
+    typename = models.CharField(max_length=50, unique=True)
     # 逻辑删除
     isDelete = models.BooleanField(default=False)
 
@@ -67,7 +67,7 @@ class ArticleType(TimeStampMixin, models.Model):
 # 文章标签模型
 class TagType(TimeStampMixin, models.Model):
     # 标签名称
-    tag_name = models.CharField(max_length=50)
+    tag_name = models.CharField(max_length=50, unique=True)
     # 逻辑删除
     isDelete = models.BooleanField(default=False)
 

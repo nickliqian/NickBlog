@@ -29,6 +29,8 @@ urlpatterns = [
     url(r'^$', IndexView.as_view(), name='index'),
     # url(r'^index/', include("article.urls", namespace="index")),
     url(r'^article/', include("article.urls", namespace="article")),
+    # short notes
+    url(r'^sn/', include("shortNotes.urls", namespace="shortNotes")),
     # apiModel
     url(r'^api_model/', include("apiModel.urls", namespace="api_model")),
     # search
