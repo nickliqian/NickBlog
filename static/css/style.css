@@ -1354,3 +1354,49 @@ fieldset[disabled] .btn-clean-two.active {
   line-height: normal;
   border-radius: 0px;
 }
+
+/*短笔记*/
+.blog-post .body .sn_tags {
+    font-size: 13px;
+    font-family:courier;
+    margin-bottom: 2px;
+}
+
+.sn_tag_1 {
+    margin-right: 15px;
+}
+
+.sn_title_size {
+    font-size: 22px;
+    margin-bottom: 1px;
+    margin-top: 5px;
+}
+
+.alert-warning {
+    color: #000000;
+}
+
+.blog-post .body .sn_content {
+    margin-bottom: 2px;
+}
+
+.sn_area {
+    position: relative;
+}
+
+.add_sn {
+    margin: 16px 5px 16px 5px;
+    padding: 1px 20px 15px 10px;
+    /*border: 5px solid black;*/
+    border-radius:25px;
+    box-shadow: 3px 3px 3px 3px;
+    position: fixed;
+    right: 210px;
+    top: 180px;
+    width: 350px;
+    background-color: white;
+}
+
+.sn_main {
+    margin-bottom: 300px;
+}

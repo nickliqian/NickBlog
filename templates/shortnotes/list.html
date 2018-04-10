@@ -2,25 +2,82 @@
 {% load staticfiles pagination_tags %}
 
 {% block headtitle %}
-<title>所有文章</title>
+    <title>所有文章</title>
 {% endblock headtitle %}
 
 {% block morehead %}
 {% endblock morehead %}
 
 {% block content %}
-<div class="col-md-8 blog-main">
-    <article class="blog-post">
+    <div class="col-md-8 blog-main sn_main">
+        <article class="blog-post">
 
-        <div class="body">
-            {% for object in object_list %}
-                <h2>{{ object.title }}</h2>
-                <div>{{ object.content_type }} {{ object.module_type }}</div>
-                <p>{{ object.content }}</p>
+            <div class="body">
+
+                {% for object in object_list %}
+                    <div class="alert alert-warning" role="alert">
+                        <h3 class="sn_title_size"><b>{{ object.title }}</b></h3>
+                        <p class="sn_tags">
+                            <span class="sn_tag_1">
+                                <b>类型:</b>
+                                {{ object.content_type }}
+                            </span>
+                            <span class="sn_tag_1">
+                                <b>归档:</b>
+                                {{ object.module_type }}
+                            </span>
+                            <span>
+                                <b>创建时间:</b>
+                                {{ object.created|date:"Y/m/j H:i" }}
+                            </span>
+                        </p>
+                        <p class="sn_content">{{ object.content }}</p>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </article>
+    </div>
+
+    <div class="col-md-4 sn_area">
+    <div class="add_sn">
+        <h3>> 添加笔记</h3>
+        <form action="{% url 'shortNotes:shortNotesList' %}" method="post">
+            {%csrf_token%}
+            <div class="form-group">
+                <label for="sn_title">Title</label>
+                <input type="text" class="form-control" placeholder="填写标题" id="sn_title" name="title">
+            </div>
+
+            <div><label for="">Type</label></div>
+            {% for type_name in type_list %}
+                {% if forloop.first %}
+                <label class="radio-inline" for="inlineRadio{{ type_name.id }}">
+                    <input type="radio" name="typeName" id="inlineRadio{{ type_name.id }}" value="{{ type_name.id }}" checked> {{ type_name.type_name }}
+                </label>
+                {% else %}
+                <label class="radio-inline" for="inlineRadio{{ type_name.id }}">
+                    <input type="radio" name="typeName" id="inlineRadio{{ type_name.id }}" value="{{ type_name.id }}"> {{ type_name.type_name }}
+                </label>
+                {% endif %}
             {% endfor %}
-        </div>
-    </article>
-</div>
+
+            <div class="form-group">
+                <label for="sn_content_input">Content</label>
+                <textarea class="form-control" rows="5" id="sn_content_input" name="content" placeholder="填写内容"></textarea>
+            </div>
+
+            <div><label for="">归档</label></div>
+            <select class="form-control" name="moduleName">
+                {% for module_name in module_list %}
+                <option value="{{ module_name.id }}">{{ module_name.type_name }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    </div>
 
 {% endblock content %}
 
