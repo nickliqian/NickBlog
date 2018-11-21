@@ -1,6 +1,5 @@
 # NickBlog
 A personal blog developed using django.  
-Click to visit my blog: [码练-博客](http://www.traincode.cn)
 
 ## 1. Project Overview
 
