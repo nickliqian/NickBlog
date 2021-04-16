@@ -4,7 +4,7 @@ chardet==3.0.4
 dj-pagination==2.3.1
 Django==1.8.1
 django-annoying==0.10.3
-django-debug-toolbar==1.9.1
+django-debug-toolbar==1.11.1
 django-extensions==1.9.8
 django-haystack==2.6.1
 django-hitcount==1.2.2
